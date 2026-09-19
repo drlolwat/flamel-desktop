@@ -44,6 +44,14 @@ class SourceBoundary(unittest.TestCase):
         (self.root / '.flamel/private.json').write_text('{}')
         self.assertNotEqual(self.audit().returncode, 0)
 
+    def test_private_network_address_fails(self):
+        address = '.'.join(['192', '168', '42', '23'])
+        with (self.root / 'README.md').open('a') as output:
+            output.write('\nInternal endpoint: http://' + address + ':8181\n')
+        result = self.audit()
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('private network address', result.stdout)
+
 
 if __name__ == '__main__':
     unittest.main()

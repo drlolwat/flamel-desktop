@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Check the reviewed source allowlist, classification, and public dependency boundary."""
 from pathlib import Path
-import hashlib,json,re,subprocess,sys,tomllib
+import hashlib,ipaddress,json,re,subprocess,sys,tomllib
 root=Path(__file__).resolve().parent.parent
 manifest=json.loads((root/'scripts/source-allowlist.json').read_text())
 allowed=set(manifest['files'])
@@ -38,6 +38,12 @@ for name in sorted(files):
  if re.search(r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----',text) and name not in {'fixtures/runtime-catalog/fixture-private-key.pem','engine/src/compaction.rs'}:report(name,'unexpected embedded private key')
  if re.search(r'(?:ghp_|github_pat_)[A-Za-z0-9_]{30,}|AKIA[0-9A-Z]{16}',text):report(name,'possible credential requires review')
  if str(Path.home())+'/' in text:report(name,'personal filesystem path')
+ for address in re.findall(r'(?<![\d.])(?:\d{1,3}\.){3}\d{1,3}(?![\d.])',text):
+  try:ip=ipaddress.IPv4Address(address)
+  except ipaddress.AddressValueError:continue
+  octets=ip.packed
+  if octets[0]==10 or (octets[0]==172 and 16<=octets[1]<=31) or octets[:2]==bytes((192,168)):
+   report(name,'private network address; use a documentation address in examples and tests')
  if p.name=='Cargo.toml':
   def walk(value):
    if isinstance(value,dict):
