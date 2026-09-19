@@ -10,8 +10,14 @@ jobs:
   linux:
     runs-on: ubuntu-22.04
     container: rust:1.97-bookworm
+    env:
+      # Keep test fixtures and Node caches outside the source checkout.
+      TMPDIR: /var/tmp
+      NODE_COMPILE_CACHE: /var/tmp/flamel-node-compile-cache
     steps:
       - uses: actions/checkout@v4
+      - name: Trust this job checkout
+        run: git config --global --add safe.directory "$PWD"
       - name: Install native build dependencies
         run: |
           apt-get update -qq
@@ -35,8 +41,14 @@ jobs:
   windows-wine:
     runs-on: ubuntu-22.04
     container: rust:1.97-bookworm
+    env:
+      # Keep test fixtures and Node caches outside the source checkout.
+      TMPDIR: /var/tmp
+      NODE_COMPILE_CACHE: /var/tmp/flamel-node-compile-cache
     steps:
       - uses: actions/checkout@v4
+      - name: Trust this job checkout
+        run: git config --global --add safe.directory "$PWD"
       - name: Install Windows cross-build and Wine tools
         run: |
           dpkg --add-architecture i386
@@ -58,7 +70,7 @@ jobs:
           cargo xwin test --locked --release --target x86_64-pc-windows-msvc -p flamel-engine --lib --no-run --message-format=json > artifacts/windows-test-build.jsonl
       - name: Verify installed Windows payload and engine under Wine
         run: |
-          export WINEPREFIX="$(mktemp -d /tmp/flamel-wine.XXXXXX)"
+          export WINEPREFIX="$(mktemp -d "$TMPDIR/flamel-wine.XXXXXX")"
           export WINEDEBUG=-all
           export WINEDLLOVERRIDES='mscoree,mshtml='
           trap 'wineserver -k; rm -rf "$WINEPREFIX"' EXIT
