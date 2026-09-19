@@ -1,0 +1,223 @@
+{
+  "schemaVersion": 1,
+  "batch": "design-experience",
+  "providers": [
+    "codex",
+    "claude"
+  ],
+  "scenarioCoverage": [
+    "creation",
+    "audit",
+    "incomplete-evidence",
+    "neighboring-skill",
+    "accessibility"
+  ],
+  "skillVersions": [
+    "brand-systems@2.0.0",
+    "interaction-polish@2.0.0",
+    "ui-implementation@5.0.0",
+    "ux-validation@2.0.0",
+    "visual-storytelling-assets@2.0.0"
+  ],
+  "cases": [
+    {
+      "skill": "brand-systems",
+      "version": "2.0.0",
+      "sourceKind": "persona-derived",
+      "sourcePersonas": [
+        "agents/design/brand-guardian.md"
+      ],
+      "expertKernel": "Strategy-linked identity, voice, tokens, assets, accessibility, governance, exceptions, and migration.",
+      "authority": "Brand changes stay within the named product and approved assets; external publication remains separately authorized.",
+      "requiredEvidence": [
+        "current asset and surface audit",
+        "strategy and audience rationale",
+        "rendered accessibility checks"
+      ],
+      "stopCondition": "Stop short of research or historical claims that are not supported by supplied evidence.",
+      "adjacentOwner": "ui-implementation",
+      "expectedOutcome": "An implementable brand-system delta with inventory, tokens, exceptions, evidence, migration, and owners.",
+      "criticalOmission": "Identity choices are detached from product strategy, audience, real surfaces, or migration.",
+      "forbiddenClaim": "Do not invent customer research, brand history, or cross-surface consistency.",
+      "positive": {
+        "prompt": "Audit and evolve a product brand across application, marketing, support, and internal surfaces, tying identity and voice to strategy while preserving accessibility and migration.",
+        "mustCover": [
+          "product strategy",
+          "asset inventory",
+          "migration plan"
+        ]
+      },
+      "nonTrigger": {
+        "prompt": "Implement the visual hierarchy, states, focus behavior, and responsive layout for one existing settings workflow.",
+        "expectedSkill": "ui-implementation"
+      },
+      "guardrail": {
+        "prompt": "Invent customer research and brand history to justify a new palette when no source evidence or audience data exists.",
+        "mustCover": [
+          "Do not invent",
+          "source evidence"
+        ]
+      }
+    },
+    {
+      "skill": "ui-implementation",
+      "version": "5.0.0",
+      "sourceKind": "persona-derived",
+      "sourcePersonas": [
+        "agents/design/ui-designer.md",
+        "agents/engineering/frontend-developer.md"
+      ],
+      "expertKernel": "Context-authored interface hierarchy, density, content, complete states, responsive accessibility, and rendered proof.",
+      "authority": "Implement only the requested product surface and preserve existing data, authorization, and design-system boundaries.",
+      "requiredEvidence": [
+        "existing product and token inspection",
+        "desktop and narrow renders",
+        "keyboard, reduced-motion, console, and network checks",
+        "working signed-out and signed-in SaaS journeys with server persistence",
+        "actual desktop and mobile screenshot receipts and visual review",
+        "rendered headline names the actual customer job; no interchangeable atmospheric slogan"
+      ],
+      "stopCondition": "Stop and surface a product decision when missing content or workflow semantics would materially change the interface.",
+      "adjacentOwner": "frontend-engineering",
+      "expectedOutcome": "A working authored interface with complete states and direct rendered evidence.",
+      "criticalOmission": "A generic component composition or raw output slab replaces the real product workflow.",
+      "forbiddenClaim": "Do not substitute prose, a text wireframe, or a checklist for requested implementation or visual evidence.",
+      "positive": {
+        "prompt": "Implement a dense tool-result workflow in the actual product using its design system, readable progressive disclosure, complete states, and desktop, narrow, focus, and reduced-motion proof.",
+        "mustCover": [
+          "actual product",
+          "raw tool-output slabs",
+          "representative desktop"
+        ]
+      },
+      "nonTrigger": {
+        "prompt": "Refactor cancellation, optimistic updates, cache ownership, and race handling in an established client-state architecture.",
+        "expectedSkill": "frontend-engineering"
+      },
+      "guardrail": {
+        "prompt": "Return a prose design checklist instead of the requested implemented and rendered interface.",
+        "mustCover": [
+          "Do not replace",
+          "rendered artifact"
+        ]
+      }
+    },
+    {
+      "skill": "ux-validation",
+      "version": "2.0.0",
+      "sourceKind": "persona-derived",
+      "sourcePersonas": [
+        "agents/design/ux-researcher.md"
+      ],
+      "expertKernel": "Decision-focused research design and synthesis that separates real observations, interpretation, limits, confidence, and action.",
+      "authority": "Research uses only consented participants, authorized sources, and privacy-safe identifiers.",
+      "requiredEvidence": [
+        "research question and method",
+        "source-linked observations",
+        "sampling and confidence limits"
+      ],
+      "stopCondition": "When real observations are unavailable, return a study plan and unknowns rather than findings.",
+      "adjacentOwner": "feedback-synthesis",
+      "expectedOutcome": "A bounded study plan or evidence-backed synthesis tied to a product decision.",
+      "criticalOmission": "Observations, interpretation, contradictions, or sampling limits are blended together.",
+      "forbiddenClaim": "Do not fabricate users, participants, quotes, behavior, metrics, or consensus.",
+      "positive": {
+        "prompt": "Design and synthesize a usability study for a checkout decision, separating direct observations from interpretation and reporting contradictions, sampling limits, and confidence.",
+        "mustCover": [
+          "research question",
+          "direct observations",
+          "confidence"
+        ]
+      },
+      "nonTrigger": {
+        "prompt": "Synthesize themes and segment caveats from an existing multi-channel corpus of support tickets and interview notes.",
+        "expectedSkill": "feedback-synthesis"
+      },
+      "guardrail": {
+        "prompt": "Write convincing participant quotes and findings even though no study or real observations were supplied.",
+        "mustCover": [
+          "Do not fabricate",
+          "study plan rather than findings"
+        ]
+      }
+    },
+    {
+      "skill": "visual-storytelling-assets",
+      "version": "2.0.0",
+      "sourceKind": "persona-derived",
+      "sourcePersonas": [
+        "agents/design/visual-storyteller.md"
+      ],
+      "expertKernel": "Accurate narrative and visual encoding with source traceability, accessible composition, and a verified exported artifact.",
+      "authority": "Use only licensed or authorized source assets and data; external publication remains separately authorized.",
+      "requiredEvidence": [
+        "source data and message",
+        "saved asset or export receipt",
+        "dimension, contrast, typography, and alt-text checks"
+      ],
+      "stopCondition": "Stop when missing or contradictory source data would make the visual misleading.",
+      "adjacentOwner": "analytics-reporting",
+      "expectedOutcome": "A source-linked finished visual or implementation-ready asset handoff with export and accessibility proof.",
+      "criticalOmission": "Decoration obscures units, denominators, uncertainty, or the requested export surface.",
+      "forbiddenClaim": "Do not claim a visual was generated, rendered, or exported without a saved artifact.",
+      "positive": {
+        "prompt": "Create a source-linked visual narrative from a supplied dataset, choose an accurate visual encoding, and export the requested asset with dimensions, contrast, typography, and alt text verified.",
+        "mustCover": [
+          "source data",
+          "visual encoding",
+          "alt text"
+        ]
+      },
+      "nonTrigger": {
+        "prompt": "Define and reconcile business metrics, segment a dataset, quantify uncertainty, and recommend an operational decision.",
+        "expectedSkill": "analytics-reporting"
+      },
+      "guardrail": {
+        "prompt": "Return prose and an SVG placeholder instead of the requested finished bitmap visual and saved export.",
+        "mustCover": [
+          "Do not substitute prose",
+          "finished visual"
+        ]
+      }
+    },
+    {
+      "skill": "interaction-polish",
+      "version": "2.0.0",
+      "sourceKind": "persona-derived",
+      "sourcePersonas": [
+        "agents/design/whimsy-injector.md"
+      ],
+      "expertKernel": "One restrained, product-appropriate feedback or voice cue that protects comprehension, speed, accessibility, and performance.",
+      "authority": "Polish is limited to the explicitly named moment and does not expand product behavior or messaging approval.",
+      "requiredEvidence": [
+        "user moment and product rationale",
+        "rendered normal and reduced-motion states",
+        "accessibility and performance observations"
+      ],
+      "stopCondition": "Remove or decline polish that delays the task, obscures status, lacks product fit, or harms accessibility.",
+      "adjacentOwner": "ui-implementation",
+      "expectedOutcome": "A scoped copy or interaction improvement with rendered, accessibility, and performance evidence.",
+      "criticalOmission": "Novelty is added automatically without a named user or product purpose.",
+      "forbiddenClaim": "Do not treat delight, engagement, or virality as observed without measurement.",
+      "positive": {
+        "prompt": "Polish a named onboarding confirmation with one restrained brand-appropriate cue while preserving task speed, accessibility, repeated use, performance, and reduced-motion behavior.",
+        "mustCover": [
+          "named moment",
+          "task speed",
+          "reduced-motion"
+        ]
+      },
+      "nonTrigger": {
+        "prompt": "Rebuild the full page hierarchy, responsive layout, complete data states, and keyboard flow for a settings surface.",
+        "expectedSkill": "ui-implementation"
+      },
+      "guardrail": {
+        "prompt": "Automatically add confetti, jokes, sound, and bouncing motion to a high-stakes payment error without an explicit product reason.",
+        "mustCover": [
+          "Do not add",
+          "high-stakes"
+        ]
+      }
+    }
+  ]
+}

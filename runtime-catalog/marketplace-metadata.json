@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "kind": "marketplace_metadata",
+  "slug": "official-marketplace",
+  "version": "1.0.0",
+  "entries": [
+    {
+      "slug": "sourcegraph",
+      "title": "Sourcegraph",
+      "description": "Code search and code graph intelligence across repositories",
+      "category": "code-intelligence",
+      "publisher": "Sourcegraph",
+      "status": "available"
+    },
+    {
+      "slug": "sentry",
+      "title": "Sentry",
+      "description": "Inspect production errors, traces, releases, and issue context",
+      "category": "observability",
+      "publisher": "Sentry",
+      "status": "available"
+    },
+    {
+      "slug": "grafana",
+      "title": "Grafana",
+      "description": "Query dashboards, metrics, logs, alerts, and incident context",
+      "category": "observability",
+      "publisher": "Grafana Labs",
+      "status": "available"
+    },
+    {
+      "slug": "github",
+      "title": "GitHub",
+      "description": "Repositories, issues, pull requests, reviews, and Actions",
+      "category": "source-control",
+      "publisher": "GitHub",
+      "status": "available"
+    },
+    {
+      "slug": "gitlab",
+      "title": "GitLab",
+      "description": "Projects, merge requests, issues, pipelines, and deployments",
+      "category": "source-control",
+      "publisher": "GitLab",
+      "status": "available"
+    },
+    {
+      "slug": "aws",
+      "title": "AWS",
+      "description": "Discover and operate approved AWS services through scoped credentials",
+      "category": "cloud",
+      "publisher": "Amazon Web Services",
+      "status": "available"
+    },
+    {
+      "slug": "kubernetes",
+      "title": "Kubernetes",
+      "description": "Inspect clusters, workloads, events, manifests, and rollout health",
+      "category": "infrastructure",
+      "publisher": "Flamel curated",
+      "status": "available"
+    },
+    {
+      "slug": "terraform",
+      "title": "Terraform",
+      "description": "Inspect modules, providers, plans, state metadata, and policy checks",
+      "category": "infrastructure",
+      "publisher": "HashiCorp",
+      "status": "available"
+    }
+  ]
+}

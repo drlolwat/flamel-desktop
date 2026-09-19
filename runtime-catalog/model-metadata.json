@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "kind": "model_metadata",
+  "slug": "provider-models",
+  "version": "1.0.1",
+  "models": [
+    {
+      "id": "gpt-6-astra",
+      "label": "GPT-6 Astra",
+      "provider": "codex",
+      "reasoningEfforts": ["low", "medium", "high", "xhigh", "max", "ultra"],
+      "defaultReasoningEffort": "medium"
+    },
+    {
+      "id": "gpt-5.6-sol",
+      "label": "GPT-5.6 Sol",
+      "provider": "codex",
+      "reasoningEfforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max",
+        "ultra"
+      ],
+      "defaultReasoningEffort": "low"
+    },
+    {
+      "id": "gpt-5.6-terra",
+      "label": "GPT-5.6 Terra",
+      "provider": "codex",
+      "reasoningEfforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max",
+        "ultra"
+      ],
+      "defaultReasoningEffort": "medium"
+    },
+    {
+      "id": "gpt-5.6-luna",
+      "label": "GPT-5.6 Luna",
+      "provider": "codex",
+      "reasoningEfforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max",
+        "ultra"
+      ],
+      "defaultReasoningEffort": "medium"
+    },
+    {
+      "id": "gpt-5.6",
+      "label": "GPT-5.6 (Sol alias)",
+      "provider": "codex",
+      "reasoningEfforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max",
+        "ultra"
+      ],
+      "defaultReasoningEffort": "low"
+    },
+    {
+      "id": "gpt-5.5",
+      "label": "GPT-5.5",
+      "provider": "codex",
+      "reasoningEfforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh"
+      ],
+      "defaultReasoningEffort": "high"
+    },
+    {
+      "id": "gpt-5.5-pro",
+      "label": "GPT-5.5 Pro",
+      "provider": "codex",
+      "reasoningEfforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh"
+      ],
+      "defaultReasoningEffort": "high"
+    },
+    {
+      "id": "gpt-5.4",
+      "label": "GPT-5.4",
+      "provider": "codex",
+      "reasoningEfforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh"
+      ],
+      "defaultReasoningEffort": "high"
+    },
+    {
+      "id": "gpt-5.4-pro",
+      "label": "GPT-5.4 Pro",
+      "provider": "codex",
+      "reasoningEfforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh"
+      ],
+      "defaultReasoningEffort": "high"
+    },
+    {
+      "id": "gpt-5.4-mini",
+      "label": "GPT-5.4 mini",
+      "provider": "codex",
+      "reasoningEfforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh"
+      ],
+      "defaultReasoningEffort": "high"
+    },
+    {
+      "id": "gpt-5.3-codex",
+      "label": "GPT-5.3 Codex",
+      "provider": "codex",
+      "reasoningEfforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh"
+      ],
+      "defaultReasoningEffort": "high"
+    },
+    {
+      "id": "gpt-5.3-codex-spark",
+      "label": "Codex Spark",
+      "provider": "codex",
+      "reasoningEfforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh"
+      ],
+      "defaultReasoningEffort": "high"
+    },
+    {
+      "id": "gpt-5.2",
+      "label": "GPT-5.2",
+      "provider": "codex",
+      "reasoningEfforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh"
+      ],
+      "defaultReasoningEffort": "high"
+    },
+    {
+      "id": "gpt-5.2-pro",
+      "label": "GPT-5.2 Pro",
+      "provider": "codex",
+      "reasoningEfforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh"
+      ],
+      "defaultReasoningEffort": "high"
+    },
+    {
+      "id": "claude-sonnet-4-6",
+      "label": "Claude Sonnet 4.6",
+      "provider": "claude",
+      "reasoningEfforts": [],
+      "defaultReasoningEffort": null
+    },
+    {
+      "id": "claude-opus-4-7",
+      "label": "Claude Opus 4.7",
+      "provider": "claude",
+      "reasoningEfforts": [],
+      "defaultReasoningEffort": null
+    },
+    {
+      "id": "claude-opus-4-6",
+      "label": "Claude Opus 4.6",
+      "provider": "claude",
+      "reasoningEfforts": [],
+      "defaultReasoningEffort": null
+    },
+    {
+      "id": "claude-haiku-4-5",
+      "label": "Claude Haiku 4.5",
+      "provider": "claude",
+      "reasoningEfforts": [],
+      "defaultReasoningEffort": null
+    }
+  ]
+}

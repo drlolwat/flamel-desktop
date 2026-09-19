@@ -1,0 +1,93 @@
+.settings-modal__backdrop {
+  padding: 12px;
+}
+
+.settings-modal__dialog {
+  min-width: 0;
+}
+
+.settings-modal__nav-list button:focus-visible,
+.settings-modal__nav > div:last-child button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.settings-modal__content {
+  min-width: 0;
+  overscroll-behavior: contain;
+}
+
+@media (max-width: 700px) {
+  .settings-modal__backdrop {
+    align-items: stretch !important;
+    padding: 0;
+  }
+
+  .settings-modal__dialog {
+    width: 100vw !important;
+    height: 100dvh !important;
+    max-height: none !important;
+    flex-direction: column !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  .settings-modal__nav {
+    width: 100% !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 6px;
+    padding: 8px !important;
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .settings-modal__nav > p {
+    display: none;
+  }
+
+  .settings-modal__nav-list {
+    flex: 1 1 auto;
+    flex-direction: row !important;
+    gap: 4px !important;
+    min-width: 0;
+    padding: 0 !important;
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+
+  .settings-modal__nav-list button {
+    flex: 0 0 auto;
+    min-height: 40px;
+    white-space: nowrap;
+  }
+
+  .settings-modal__nav > div:last-child {
+    flex: 0 0 auto;
+    margin-top: 0 !important;
+    padding: 0 !important;
+  }
+
+  .settings-modal__nav > div:last-child button {
+    justify-content: center !important;
+    width: 40px !important;
+    min-height: 40px;
+    padding: 0 !important;
+    overflow: hidden;
+    font-size: 0 !important;
+  }
+
+  .settings-modal__content {
+    padding: 20px 16px 28px !important;
+  }
+
+  .settings-modal__content > h2 {
+    margin-bottom: 18px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .settings-modal__content {
+    padding-inline: 12px !important;
+  }
+}

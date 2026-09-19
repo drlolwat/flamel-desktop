@@ -1,0 +1,83 @@
+{
+  "schema": "flamel.engineering_result.v1",
+  "actions": [
+    {
+      "tool": "file_read",
+      "action": "read",
+      "dataFields": ["files"],
+      "countFields": ["files", "lines", "totalLines"]
+    },
+    {
+      "tool": "file_read",
+      "action": "batch",
+      "dataFields": ["files"],
+      "countFields": ["files", "lines", "totalLines"]
+    },
+    {
+      "tool": "file_read",
+      "action": "summary",
+      "dataFields": ["imports", "language", "path", "purpose", "symbols", "totalLines"],
+      "countFields": ["files", "imports", "symbols", "totalLines"]
+    },
+    {
+      "tool": "file_read",
+      "action": "glob",
+      "dataFields": ["paths", "pattern", "root"],
+      "countFields": ["paths"]
+    },
+    {
+      "tool": "file_read",
+      "action": "find",
+      "dataFields": ["mode", "paths", "query", "root"],
+      "countFields": ["matches", "paths"]
+    },
+    {
+      "tool": "file_read",
+      "action": "list_dir",
+      "dataFields": ["paths", "root"],
+      "countFields": ["paths"]
+    },
+    {
+      "tool": "code_nav",
+      "action": "search",
+      "dataFields": ["contextLines", "include", "matches", "query", "root"],
+      "countFields": ["contexts", "files", "matches", "rows"]
+    },
+    {
+      "tool": "code_nav",
+      "action": "symbols",
+      "dataFields": ["language", "path", "symbols"],
+      "countFields": ["symbols"]
+    },
+    {
+      "tool": "code_nav",
+      "action": "find",
+      "dataFields": ["children", "language", "namePath", "path", "range", "source"],
+      "countFields": ["children", "sourceLines", "symbols"]
+    },
+    {
+      "tool": "code_nav",
+      "action": "refs",
+      "dataFields": ["contextLines", "matches", "root", "symbol"],
+      "countFields": ["contexts", "files", "matches", "rows"]
+    },
+    {
+      "tool": "code_nav",
+      "action": "imports",
+      "dataFields": ["imports", "language", "path", "totalLines"],
+      "countFields": ["imports"]
+    },
+    {
+      "tool": "code_nav",
+      "action": "context",
+      "dataFields": ["files", "keywords", "task"],
+      "countFields": ["files"]
+    },
+    {
+      "tool": "code_nav",
+      "action": "deps",
+      "dataFields": ["inbound", "outbound", "path"],
+      "countFields": ["inbound", "outbound"]
+    }
+  ]
+}

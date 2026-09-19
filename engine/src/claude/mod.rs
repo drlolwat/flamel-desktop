@@ -1,0 +1,10 @@
+pub mod agent_pool;
+pub mod agent_runner;
+pub mod claude_provider;
+pub mod codex_provider;
+pub(crate) mod credential_files;
+pub mod git_ops;
+pub mod issue_poller;
+pub mod provider;
+pub mod session_pool;
+pub mod spawn;

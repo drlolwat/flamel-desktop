@@ -1,0 +1,435 @@
+{
+  "schemaVersion": 1,
+  "skills": [
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "visual-storytelling-assets",
+      "version": "1.0.0",
+      "title": "Visual storytelling and assets",
+      "description": "Use when information needs a visual narrative, illustration, or presentation asset; not for routine UI layout.",
+      "category": "design",
+      "instructions": "Start from the audience, message, source data, output surface, and existing visual language. Choose an accurate narrative and visual encoding, then create or direct only the needed assets. Cite source data and verify dimensions, readability, contrast, and export quality.",
+      "triggers": [
+        "visual narrative asset",
+        "data storytelling"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "interaction-polish",
+      "version": "1.0.0",
+      "title": "Interaction polish",
+      "description": "Use for explicitly requested product-appropriate microcopy, motion, or delight; not as decoration by default.",
+      "category": "design",
+      "instructions": "Identify the user moment, product voice, interaction cost, and accessibility constraints. Prefer one meaningful cue over scattered novelty; preserve task speed, reduced-motion behavior, keyboard access, and performance. Render the affected state and report the observed result. Do not add mascots, jokes, confetti, sound, or motion without a product reason.",
+      "triggers": [
+        "interaction polish",
+        "microcopy refinement"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "ai-systems",
+      "version": "1.0.0",
+      "title": "AI systems",
+      "description": "Use for model-backed product features, evaluation, retrieval, or agent architecture; not for ordinary deterministic logic.",
+      "category": "engineering",
+      "instructions": "Define the product task, data boundary, quality target, latency and cost budget, safety risks, and deterministic fallback before selecting a model. Build the smallest evaluable path, version prompts and schemas, and measure representative successes and failures. Report model identity, data provenance, quality, latency, cost, safety findings, and uncertainty.",
+      "triggers": [
+        "language model integration",
+        "ml evaluation"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "backend-architecture",
+      "version": "1.0.0",
+      "title": "Backend architecture",
+      "description": "Use for service, API, persistence, or distributed-boundary design; not for isolated edits with an established pattern.",
+      "category": "engineering",
+      "instructions": "Map callers, trust boundaries, data ownership, consistency needs, failure modes, and operational constraints. Prefer the simplest boundary that meets measured needs, define contracts and compatibility behavior, and identify migration, security, observability, and performance dependencies. Validate with contract, schema, or focused load evidence as appropriate.",
+      "triggers": [
+        "service boundary design",
+        "api architecture"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "infrastructure-operations",
+      "version": "1.0.0",
+      "title": "Infrastructure operations",
+      "description": "Use for CI/CD, infrastructure as code, observability, capacity, cost, or recovery design; not for routine app code.",
+      "category": "operations",
+      "instructions": "Inventory the current runtime, state, secrets, environments, ownership, and failure history. Make repeatable least-privilege changes with explicit health signals, capacity assumptions, cost impact, and rollback. Validate the affected path. Leave release execution to Deployment and live recovery to Incident response.",
+      "triggers": [
+        "ci cd infrastructure",
+        "operational capacity"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "frontend-engineering",
+      "version": "1.0.0",
+      "title": "Frontend engineering",
+      "description": "Use for component architecture, client state, data flow, accessibility, or web performance; not for visual direction alone.",
+      "category": "engineering",
+      "instructions": "Trace existing component, state, routing, and data-fetching patterns. Model loading, empty, error, optimistic, cancellation, focus, and responsive behavior explicitly; preserve accessibility and measured performance. Depend on UI implementation for craft review, and validate with focused tests plus a rendered workflow when visible.",
+      "triggers": [
+        "frontend state architecture",
+        "web performance implementation"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "mobile-engineering",
+      "version": "1.0.0",
+      "title": "Mobile engineering",
+      "description": "Use for native or cross-platform mobile architecture, device behavior, permissions, or build delivery; not for responsive web.",
+      "category": "engineering",
+      "instructions": "Establish platform targets, supported OS versions, offline and lifecycle behavior, permissions, storage, navigation, and native integrations. Follow repository conventions, minimize bridge surface, and handle denial, interruption, backgrounding, and constrained devices. Validate representative device or emulator states and report build, performance, accessibility, and permission evidence.",
+      "triggers": [
+        "mobile app architecture",
+        "device integration"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "rapid-prototyping",
+      "version": "1.0.0",
+      "title": "Rapid prototyping",
+      "description": "Use for a time-bounded proof of concept that answers a named uncertainty; not for production-readiness claims.",
+      "category": "engineering",
+      "instructions": "Name the hypothesis, deadline, demo path, throwaway boundaries, and required evidence before building. Reuse stable primitives and stub only explicitly nonessential dependencies. Deliver a runnable demonstration, findings, known shortcuts, and a recommendation to discard, iterate, or productionize; never present prototype shortcuts as launch-ready.",
+      "triggers": [
+        "proof of concept",
+        "mvp prototype"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "test-engineering",
+      "version": "1.0.0",
+      "title": "Test engineering",
+      "description": "Use when a code change needs focused tests or a failing test needs repair; not for hiding regressions by weakening tests.",
+      "category": "quality",
+      "instructions": "Derive tests from the changed contract and plausible failures, then choose the lowest-cost layer that proves behavior. Reproduce failures before editing, preserve meaningful assertions, and fix product code when a test exposes a real defect. Run the new test and adjacent suite; report commands, results, and untested risk.",
+      "triggers": [
+        "test coverage implementation",
+        "regression test repair"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "app-store-publishing",
+      "version": "1.0.0",
+      "title": "App-store publishing",
+      "description": "Use for store listings, metadata experiments, or submission readiness; not without current official store-policy research.",
+      "category": "product",
+      "instructions": "Identify store, locale, app version, audience, positioning, current listing, and measured funnel. Verify current official metadata and submission constraints. Deliver compliant field-ready metadata, asset and localization checklists, an experiment plan, and cited policy evidence. Do not promise rankings or use frozen keyword folklore.",
+      "triggers": [
+        "app store listing",
+        "store submission metadata"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "ai-systems",
+      "version": "2.0.0",
+      "title": "AI systems",
+      "description": "Use for model-backed product features, evaluation, retrieval, or agent architecture; not for ordinary deterministic logic.",
+      "category": "engineering",
+      "instructions": "First prove why deterministic logic is insufficient. Define the user task, model and data boundary, provenance and retention rules, quality and safety rubric, latency and cost budget, and deterministic fallback. Choose model, retrieval, tools, prompt and output schema only after those constraints; version each dependency and address freshness, citations, prompt injection, data leakage, timeouts, retries, and circuit breaking. Evaluate against a baseline with representative successes, failures, edge and adversarial cases, and record model identity, dataset limits, quality, latency, cost, observability, fallback behavior, and uncertainty. Stop when representative data, permission for sensitive inputs, or a safe failure path is missing rather than presenting a plausible demo as measured quality.",
+      "triggers": [
+        "model backed product evaluation",
+        "retrieval augmented generation",
+        "agent safety latency cost"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "backend-architecture",
+      "version": "2.0.0",
+      "title": "Backend architecture",
+      "description": "Use for service, API, persistence, or distributed-boundary design; not for isolated edits with an established pattern.",
+      "category": "engineering",
+      "instructions": "Trace current callers and reuse the existing boundary when it holds. Define API and event contracts, versioning, data ownership and schema, authentication, authorization and tenant isolation, consistency and transaction needs, idempotency, concurrency, timeouts, retry and backpressure, partial failure, observability, and operational ownership. Prefer the simplest compatible process and storage boundary, then make migration, rollout and rollback explicit. Validate with contract, schema, compatibility, concurrent and fault-path evidence proportionate to risk. Stop when ownership, destructive data behavior, or cross-service failure semantics remain unresolved. Deliver the contract, control and data flow, rejected complexity, evidence, and residual risks.",
+      "triggers": [
+        "service data boundary design",
+        "api consistency concurrency",
+        "distributed failure compatibility"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "frontend-engineering",
+      "version": "2.0.0",
+      "title": "Frontend engineering",
+      "description": "Use for component architecture, client state, data flow, accessibility, or web performance; not for visual direction alone.",
+      "category": "engineering",
+      "instructions": "Trace the existing router, component ownership, client state, cache and data-fetching flow, and design-system patterns before editing. Model loading, empty, partial, stale, optimistic, success, error, retry and cancellation transitions, including races, aborts and unmount cleanup. Preserve semantic structure, labels, keyboard and focus order, live-region behavior, contrast, reduced motion and responsive layout; set a measured render, network or bundle budget when performance is in scope. Use UI implementation for visual direction. Validate focused state and accessibility tests plus the rendered workflow at representative desktop and narrow widths, checking console and network evidence. Do not invent product data or hide a failure state.",
+      "triggers": [
+        "frontend state data flow",
+        "accessible component architecture",
+        "web cancellation performance"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "mobile-engineering",
+      "version": "2.0.0",
+      "title": "Mobile engineering",
+      "description": "Use for native or cross-platform mobile architecture, device behavior, permissions, or build delivery; not for responsive web.",
+      "category": "engineering",
+      "instructions": "Establish native or cross-platform targets, supported OS and device classes, repository conventions, navigation, storage and migration rules, offline and sync behavior, lifecycle transitions, background limits, deep links, notifications, and native integrations. Handle permission request, denial and revocation, interruption, process death, constrained network, battery, memory and device states while minimizing bridge surface and protecting local data. Validate buildability and representative device or emulator behavior with accessibility, startup, performance, storage and permission evidence. Treat signing, store submission, production credentials and external mutation as separate actions requiring explicit authority. Deliver platform-specific decisions, tested states, results, and remaining device gaps.",
+      "triggers": [
+        "mobile lifecycle offline design",
+        "device permission integration",
+        "native build delivery"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "rapid-prototyping",
+      "version": "2.0.0",
+      "title": "Rapid prototyping",
+      "description": "Use for a time-bounded proof of concept that answers a named uncertainty; not for production-readiness claims.",
+      "category": "engineering",
+      "instructions": "Name one hypothesis, timebox, decision threshold, demo path, and evidence that would confirm or reject it before building. Reuse repository primitives and installed dependencies; isolate throwaway code, mark stubs and synthetic data, and omit only dependencies that cannot affect the named uncertainty. Do not cross real security or data boundaries, mutate production, or label prototype shortcuts production-ready. Instrument the smallest runnable demonstration, record observations and counterevidence, and stop when the decision is answerable. Deliver the demo command, findings, known shortcuts and risks, and a clear discard, iterate, or productionize recommendation with the work still required.",
+      "triggers": [
+        "time bounded proof of concept",
+        "technical uncertainty prototype",
+        "disposable product experiment"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "test-engineering",
+      "version": "2.0.0",
+      "title": "Test engineering",
+      "description": "Use when a code change needs focused tests or a failing test needs repair; not for hiding regressions by weakening tests.",
+      "category": "quality",
+      "instructions": "Derive the changed contract and plausible failure modes, then choose the smallest test layer that can prove observable behavior. Cover the relevant success, boundary, error, authorization, concurrency, idempotency, time and cleanup paths with deterministic fixtures and project conventions; avoid mocks that erase the contract and universal timing claims. For a failure, reproduce first and classify product defect, stale expectation, brittleness, environment or flakiness before editing. Preserve test intent and never weaken, delete or overfit an assertion merely to make the suite green. Run the new or repaired test in isolation, then adjacent regressions, and report exact commands, results, uncovered risk and any check that could not run.",
+      "triggers": [
+        "focused regression test",
+        "test failure repair",
+        "concurrency idempotency test"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "infrastructure-operations",
+      "version": "2.0.0",
+      "title": "Infrastructure operations",
+      "description": "Use for CI/CD, infrastructure as code, observability, capacity, cost, or recovery design; not for routine app code.",
+      "category": "operations",
+      "instructions": "Start with topology, environments, ownership, SLOs, state backends, secrets, existing CI/CD and infrastructure as code, telemetry, load, cost and failure history. Reuse native platform primitives, pin change inputs, keep state locking and drift detection explicit, and enforce least privilege across identities, networks and secrets. Define health signals, alert ownership, capacity headroom, scaling limits, cost assumptions, backups, disaster recovery objectives and a reversible rollout and rollback before mutation. Prove the plan or diff, bounded non-production or canary behavior, observability, failure handling and recovery; distinguish measured evidence from estimates. Stop before any external mutation when authority, state ownership, secrets, blast radius or rollback is unclear. Infrastructure owns repeatable configuration; Deployment owns release execution, Incident response owns live stabilization, and Performance analysis owns benchmark proof. Deliver the scoped change or assessment, evidence, capacity and cost limits, drift and recovery checks, rollback and residual risk without claiming unobserved health.",
+      "triggers": [
+        "infrastructure state drift",
+        "operational capacity recovery",
+        "ci cd environment governance"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "visual-storytelling-assets",
+      "version": "2.0.0",
+      "title": "Visual storytelling and assets",
+      "description": "Use when information needs a visual narrative, illustration, or presentation asset; not for routine UI layout.",
+      "category": "design",
+      "instructions": "Establish the audience, decision or message, source data and citations, delivery surface, dimensions, brand language and accessibility constraints. Choose the narrative and visual encoding that accurately exposes the important comparison, sequence, hierarchy, distribution or uncertainty; do not force a chart where an illustration is clearer or decorate data in a way that changes its meaning. Preserve scales, units, labels, denominators, ordering, annotations and source traceability, and distinguish observed data from illustration or inference. Create or direct only the assets needed, using the available image-generation or asset workflow when the requested deliverable is a finished visual. Verify aspect ratio, crop safety, typography, contrast, color-blind readability, alt text, file format, compression and export dimensions on the target surface. Do not substitute prose, ASCII, CSS or an SVG placeholder for a requested generated bitmap or finished visual, and do not claim an asset was rendered or exported without a saved artifact. Deliver the source-linked narrative, finished asset or implementation-ready handoff, path or export receipt, accessibility text, checks and known limits.",
+      "triggers": [
+        "visual narrative production",
+        "data illustration asset",
+        "presentation visual encoding"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "interaction-polish",
+      "version": "2.0.0",
+      "title": "Interaction polish",
+      "description": "Use for explicitly requested product-appropriate microcopy, motion, or delight; not as decoration by default.",
+      "category": "design",
+      "instructions": "Apply polish only to a named moment where feedback, comprehension, confidence or product voice can materially improve; do not auto-activate after every interface change. Establish the user's state, task, emotion, frequency of exposure, brand voice, latency and device constraints. Prefer one restrained cue through clearer microcopy, state feedback, transition or motion over scattered novelty, and keep task speed and comprehension primary. Preserve semantic meaning, keyboard and screen-reader behavior, focus, contrast, touch targets, reduced-motion alternatives, interruption and replay behavior, and test performance on a representative constrained device or budget. Do not add confetti, particles, mascots, jokes, sounds, custom cursors, easter eggs, bouncing motion or cultural references without a product-specific reason and explicit fit. Avoid humor or celebratory motion in high-stakes, destructive, payment, legal, medical, security, incident or error moments unless specifically requested and safe. Render and inspect the affected state, including repeated use and reduced motion, and remove the treatment if it delays the task, obscures status or degrades accessibility. Deliver the scoped copy or interaction, reason, implementation evidence, accessibility and performance checks, and remaining tradeoff.",
+      "triggers": [
+        "named interaction polish",
+        "product microcopy refinement",
+        "accessible motion feedback"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "app-store-publishing",
+      "version": "2.0.0",
+      "title": "App-store publishing",
+      "description": "Use for store listings, metadata experiments, or submission readiness; not without current official store-policy research.",
+      "category": "product",
+      "instructions": "Confirm the target store, app and version, locales, audience, product positioning, verified functionality, current listing, measured funnel and intended decision. Before drafting, check current dated official store documentation for metadata fields and limits, content and age rules, privacy disclosures, asset specifications, localization, experiments, review and submission requirements; record the source and effective or access date rather than relying on frozen optimization lore. Keep names, claims, screenshots, previews, pricing and privacy statements accurate to the shipped product, preserve asset and testimonial rights, and localize meaning and cultural fit instead of word-for-word translation. Distinguish searchable relevance from guaranteed ranking and define listing tests with a baseline, decision metric, guardrails and stopping rule. Deliver field-ready metadata by locale, asset and rights inventory, policy and privacy checklist, experiment or submission-readiness record, citations, blockers and owners. Do not promise ranking, approval, installs or revenue, and do not submit, change pricing or mutate a store account without explicit authority.",
+      "triggers": [
+        "current app store metadata",
+        "store listing localization",
+        "submission readiness policy"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Flamel Desktop",
+  "version": "0.1.0",
+  "identifier": "dev.flamel.local",
+  "build": {
+    "beforeDevCommand": "npm run dev --workspace frontend -- --host 127.0.0.1 --port 8182",
+    "beforeBuildCommand": "npm run build:local --workspace frontend",
+    "devUrl": "http://127.0.0.1:8182",
+    "frontendDist": "../frontend/dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Flamel Desktop",
+        "width": 1400,
+        "height": 900,
+        "minWidth": 800,
+        "minHeight": 600,
+        "visible": false,
+        "decorations": false
+      }
+    ],
+    "enableGTKAppId": true,
+    "security": {
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src ipc: http://ipc.localhost; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' blob:; worker-src 'self' blob:; frame-src http://localhost:* http://127.0.0.1:*; object-src 'none'; base-uri 'none'; form-action 'none'",
+      "devCsp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src ipc: http://ipc.localhost ws://127.0.0.1:8182 http://127.0.0.1:8182; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' blob:; worker-src 'self' blob:; frame-src http://localhost:* http://127.0.0.1:*; object-src 'none'; base-uri 'none'; form-action 'none'"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "createUpdaterArtifacts": false,
+    "icon": [
+      "icons/icon.png",
+      "icons/icon.ico"
+    ],
+    "linux": {
+      "deb": {
+        "depends": [
+          "libwebkit2gtk-4.1-0",
+          "libgtk-3-0"
+        ]
+      }
+    },
+    "windows": {
+      "allowDowngrades": false,
+      "nsis": {
+        "compression": "lzma",
+        "headerImage": "windows/installer-header.bmp",
+        "sidebarImage": "windows/installer-sidebar.bmp",
+        "installerIcon": "icons/icon.ico",
+        "installMode": "currentUser",
+        "languages": [
+          "English"
+        ],
+        "startMenuFolder": "Flamel"
+      }
+    },
+    "resources": [
+      "resources/bin/*",
+      "resources/notices/*"
+    ],
+    "publisher": "Flamel.dev",
+    "shortDescription": "Flamel Desktop workspace client",
+    "longDescription": "A local workspace with optional connections to Flamel servers."
+  },
+  "plugins": {}
+}

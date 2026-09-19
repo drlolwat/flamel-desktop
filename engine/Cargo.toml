@@ -1,0 +1,156 @@
+[package]
+name = "flamel-engine"
+version = "0.1.0"
+edition = "2024"
+autobins = false
+license-file = "../LICENSE.md"
+
+[lib]
+name = "flamel"
+
+[dependencies]
+flamel-protocol = { path = "../protocol" }
+http-body-util = "0.1"
+# Tauri — desktop only, gated behind `desktop` feature
+
+# Async runtime — Tauri needs it
+tokio = { version = "1", features = ["full"] }
+
+# Serialization — used everywhere
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+serde_yaml = { version = "0.9", optional = true }
+
+# Client utilities — desktop commands + install_agents
+dirs = "6"
+open = "5"
+tracing = "0.1"
+toml_edit = "0.25"
+
+# ── Server / MCP — all optional, enabled via `server` feature ──────────────
+# Web server
+axum = { version = "0.8", features = ["multipart", "ws"], optional = true }
+tower = { version = "0.5", features = ["util"], optional = true }
+
+# Database
+rusqlite = { version = "0.33", features = ["bundled", "vtab"], optional = true }
+tokio-postgres = { version = "0.7", optional = true }
+mysql = { version = "28", default-features = false, features = ["minimal-rust", "rustls-tls-ring"], optional = true }
+
+# Auth / crypto
+rand = { version = "0.9", optional = true }
+jsonwebtoken = { version = "9", optional = true }
+sha2 = { version = "0.10", optional = true }
+hmac = { version = "0.12", optional = true }
+hex = { version = "0.4", optional = true }
+base64 = { version = "0.22", optional = true }
+chacha20poly1305 = { version = "0.10", optional = true }
+ed25519-dalek = { version = "2", optional = true }
+semver = { version = "1", features = ["serde"], optional = true }
+rmcp = { version = "3.1.2", default-features = false, features = ["client", "transport-child-process", "transport-streamable-http-client-reqwest"], optional = true }
+
+# Async / streaming
+tokio-util = { version = "0.7", optional = true }
+async-stream = { version = "0.3", optional = true }
+futures = { version = "0.3", optional = true }
+
+# HTTP client / scraping
+reqwest = { version = "0.12", default-features = false, features = ["json", "blocking", "rustls-tls", "stream"], optional = true }
+scraper = { version = "0.22", optional = true }
+tungstenite = { version = "0.24", optional = true }
+tokio-tungstenite = { version = "0.24", features = ["rustls-tls-webpki-roots"], optional = true }
+
+# Utilities
+uuid = { version = "1", features = ["v4", "serde"], optional = true }
+chrono = { version = "0.4", features = ["serde"], optional = true }
+libc = { version = "0.2", optional = true }
+nix = { version = "0.29", features = ["signal"], optional = true }
+portable-pty = { version = "0.9", optional = true }
+regex-lite = { version = "0.1", optional = true }
+glob = { version = "0.3", optional = true }
+ignore = { version = "0.4", optional = true }
+urlencoding = { version = "2", optional = true }
+url = { version = "2", optional = true }
+tracing-subscriber = { version = "0.3", features = ["env-filter"], optional = true }
+
+# Tree-sitter (flamel_mcp code navigation)
+tree-sitter = { version = "0.26", optional = true }
+tree-sitter-rust = { version = "*", optional = true }
+tree-sitter-typescript = { version = "*", optional = true }
+tree-sitter-javascript = { version = "*", optional = true }
+
+[[test]]
+name = "mcp_parent_guard"
+path = "tests/mcp_parent_guard.rs"
+harness = false
+required-features = ["engine"]
+
+[[test]]
+name = "mcp_provider_boundary"
+path = "tests/mcp_provider_boundary.rs"
+harness = false
+required-features = ["engine"]
+
+[[bin]]
+name = "flamel_mcp"
+path = "src/bin/flamel_mcp.rs"
+required-features = ["engine"]
+
+[[bin]]
+name = "git_mcp"
+path = "src/bin/git_mcp.rs"
+required-features = ["engine"]
+
+[[bin]]
+name = "docs_mcp"
+path = "src/bin/docs_mcp.rs"
+required-features = ["engine"]
+
+[[bin]]
+name = "db_mcp"
+path = "src/bin/db_mcp.rs"
+required-features = ["engine"]
+
+[[bin]]
+name = "browser_mcp"
+path = "src/bin/browser_mcp.rs"
+required-features = ["engine"]
+
+[[bin]]
+name = "memory_mcp"
+path = "src/bin/memory_mcp.rs"
+required-features = ["engine"]
+
+
+
+
+[[bin]]
+name = "flamel_pack_manifest"
+path = "src/bin/flamel_pack_manifest.rs"
+required-features = ["engine"]
+
+[features]
+default = ["engine"]
+engine = [
+    "dep:axum", "dep:tower", 
+    "dep:rusqlite", "dep:tokio-postgres", "dep:mysql", "dep:rmcp", "dep:serde_yaml",
+    "dep:rand", "dep:jsonwebtoken", "dep:sha2", "dep:hmac", "dep:hex", "dep:base64", "dep:chacha20poly1305", "dep:ed25519-dalek", "dep:semver",
+    "dep:tokio-util", "dep:async-stream", "dep:futures",
+    "dep:reqwest", "dep:scraper", "dep:tungstenite", "dep:tokio-tungstenite",
+    "dep:uuid", "dep:chrono", "dep:libc", "dep:regex-lite",
+    "dep:glob", "dep:ignore", "dep:urlencoding", "dep:url", "dep:tracing-subscriber",
+    "dep:tree-sitter", "dep:tree-sitter-rust", "dep:tree-sitter-typescript", "dep:tree-sitter-javascript",
+    "dep:nix", "dep:portable-pty",
+]
+
+[[test]]
+name = "native_runtime"
+path = "tests/native_runtime.rs"
+harness = false
+required-features = ["engine"]
+
+[[test]]
+name = "restored_profile"
+path = "tests/restored_profile.rs"
+harness = false
+required-features = ["engine"]

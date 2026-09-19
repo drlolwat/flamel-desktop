@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="164" height="314" viewBox="0 0 164 314">
+  <rect width="164" height="314" fill="#09090a"/>
+  <rect x="163" width="1" height="314" fill="#312b29"/>
+  <g opacity=".28" stroke="#332a28" stroke-width="1">
+    <path d="M20 74h124M20 238h124"/>
+    <path d="M20 80h72M72 232h72"/>
+  </g>
+  <g transform="translate(49 62)" fill="none" stroke="#e24737" stroke-linejoin="round">
+    <path d="M33 4 62 70H4Z" stroke-width="3"/>
+    <path d="M33 0v76" stroke-width="5"/>
+  </g>
+  <text x="82" y="171" text-anchor="middle" fill="#f4f1ef" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="600">Flamel</text>
+  <text x="82" y="190" text-anchor="middle" fill="#938d8a" font-family="Segoe UI, Arial, sans-serif" font-size="10" letter-spacing="2">DESKTOP</text>
+  <rect x="20" y="286" width="124" height="1" fill="#2b2725"/>
+  <rect x="20" y="294" width="44" height="2" fill="#e24737"/>
+</svg>

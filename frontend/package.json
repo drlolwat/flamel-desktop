@@ -1,0 +1,66 @@
+{
+  "name": "@flamel/workspace",
+  "version": "0.1.0-extraction.6",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "test": "vitest run",
+    "perf:budget": "node scripts/check-performance-budgets.mjs",
+    "build": "tsc && vite build",
+    "build:budget": "npm run build && npm run perf:budget",
+    "dev:local": "vite --mode desktop",
+    "build:local": "tsc && vite build --mode desktop",
+    "build:web": "tsc && vite build --mode web",
+    "build:web:budget": "npm run build:web && npm run perf:budget",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
+    "@flamel/shared": "0.1.1",
+    "@monaco-editor/react": "^4.7.0",
+    "@tauri-apps/api": "^2.10.1",
+    "@tauri-apps/plugin-clipboard-manager": "^2.3.2",
+    "@tauri-apps/plugin-process": "^2.3.1",
+    "@tauri-apps/plugin-updater": "^2.10.1",
+    "@xterm/addon-fit": "^0.11.0",
+    "@xterm/addon-search": "^0.16.0",
+    "@xterm/xterm": "^6.0.0",
+    "framer-motion": "^12.5.0",
+    "lucide-react": "^0.509.0",
+    "monaco-editor": "^0.56.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-markdown": "^9.0.3",
+    "recharts": "^3.8.1",
+    "remark-gfm": "^4.0.1",
+    "zustand": "^5.0.3",
+    "tailwindcss": "^4.2.1",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.2.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "postcss": "^8.5.19",
+    "typescript": "^5.7.2",
+    "vite": "^6.2.2",
+    "vitest": "^4.1.9"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-win32-x64-msvc": "4.60.0",
+    "@tailwindcss/oxide-win32-x64-msvc": "4.2.2"
+  },
+  "license": "SEE LICENSE IN LICENSE.md",
+  "exports": {
+    ".": "./src/workspace.ts",
+    "./*": "./src/*"
+  },
+  "files": [
+    "src",
+    "LICENSE.md",
+    "NOTICE"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "personaDerivedSkills": [
+    "brand-systems",
+    "ui-implementation",
+    "ux-validation",
+    "visual-storytelling-assets",
+    "interaction-polish",
+    "ai-systems",
+    "backend-architecture",
+    "infrastructure-operations",
+    "frontend-engineering",
+    "mobile-engineering",
+    "rapid-prototyping",
+    "test-engineering",
+    "app-store-publishing",
+    "content-strategy",
+    "growth-strategy",
+    "current-platform-content",
+    "feedback-synthesis",
+    "product-prioritization",
+    "market-research",
+    "experiment-design-analysis",
+    "release-readiness",
+    "workflow-orchestration",
+    "analytics-reporting",
+    "financial-analysis",
+    "legal-compliance",
+    "support-operations",
+    "api-verification",
+    "performance-analysis",
+    "test-result-analysis",
+    "tool-evaluation",
+    "evidence-research",
+    "git-release-workflow",
+    "tone-and-humor"
+  ],
+  "specialistSkills": [
+    "debugging",
+    "migrations",
+    "security-review",
+    "deployment",
+    "incident-response",
+    "release-verification"
+  ],
+  "explicitIntentSkills": [
+    "growth-strategy",
+    "tone-and-humor"
+  ],
+  "nativeWrappers": [
+    "native-time",
+    "native-file-operations"
+  ]
+}

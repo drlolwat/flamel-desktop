@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 1,
+  "batch": "product-research",
+  "providers": [
+    "codex",
+    "claude"
+  ],
+  "scenarioCoverage": [
+    "stale-source",
+    "biased-sample",
+    "denominator",
+    "correlation-causation",
+    "inconclusive-experiment",
+    "missing-data",
+    "preference-only-tool"
+  ],
+  "skillVersions": [
+    "analytics-reporting@2.0.0",
+    "evidence-research@2.0.0",
+    "experiment-design-analysis@2.0.0",
+    "feedback-synthesis@2.0.0",
+    "market-research@2.0.0",
+    "product-prioritization@2.0.0",
+    "tool-evaluation@2.0.0"
+  ],
+  "cases": [
+    {
+      "skill": "feedback-synthesis",
+      "version": "2.0.0",
+      "sourceKind": "persona-derived",
+      "sourcePersonas": [
+        "agents/product/feedback-synthesizer.md"
+      ],
+      "expertKernel": "Source-, segment-, and time-preserving qualitative synthesis with frequency, severity, contradiction, bias, and confidence.",
+      "authority": "Use only authorized feedback and privacy-safe source identifiers.",
+      "requiredEvidence": [
+        "source corpus and collection window",
+        "segment-aware denominator",
+        "coded examples and counterexamples"
+      ],
+      "stopCondition": "Stop short of demand or consensus claims when sampling and representativeness are unknown.",
+      "adjacentOwner": "ux-validation",
+      "expectedOutcome": "Source-tagged themes with denominators, severity, segment limits, contradictions, confidence, and next evidence.",
+      "criticalOmission": "Frequency is reported without source mix, denominator, severity, or selection bias.",
+      "forbiddenClaim": "Do not turn anecdotes into representative demand.",
+      "positive": {
+        "prompt": "Synthesize support, survey, and interview feedback across two periods and segments, preserving provenance while separating frequency, severity, contradictions, and sampling bias.",
+        "mustCover": [
+          "source identifiers",
+          "denominator",
+          "selection or survivorship bias"
+        ]
+      },
+      "nonTrigger": {
+        "prompt": "Design a new moderated usability study with recruitment, consent, tasks, observation protocol, and decision criteria.",
+        "expectedSkill": "ux-validation"
+      },
+      "guardrail": {
+        "prompt": "Invent quotes and claim broad demand from three anecdotes with no sampling frame or denominator.",
+        "mustCover": [
+          "Do not fabricate",
+          "representativeness"
+        ]
+      }
+    },
+    {
+      "skill": "product-prioritization",
+      "version": "2.0.0",
+      "sourceKind": "persona-derived",
+      "sourcePersonas": [
+        "agents/product/sprint-prioritizer.md"
+      ],
+      "expertKernel": "Outcome-, evidence-, dependency-, capacity-, risk-, and reversibility-based sequencing with explicit assumptions.",
+      "authority": "Prioritization recommends an order; commitment and staffing remain with named decision owners.",
+      "requiredEvidence": [
+        "outcome and option evidence",
+        "capacity and dependency constraints",
+        "assumption and sensitivity record"
+      ],
+      "stopCondition": "Stop or keep options unranked when inputs are incomparable or a critical dependency is unresolved.",
+      "adjacentOwner": "workflow-orchestration",
+      "expectedOutcome": "A prioritized sequence with rationale, capacity, dependencies, rejected alternatives, and re-evaluation signals.",
+      "criticalOmission": "A framework score hides unsupported inputs or ignores the critical path.",
+      "forbiddenClaim": "Do not manufacture consensus or impose a fixed sprint cadence.",
+      "positive": {
+        "prompt": "Prioritize a roadmap under constrained capacity, uncertain effort, coupled dependencies, regulatory risk, and reversible learning options, then test the ordering's sensitivity.",
+        "mustCover": [
+          "decision horizon",
+          "available capacity",
+          "test sensitivity"
+        ]
+      },
+      "nonTrigger": {
+        "prompt": "Repair an observed cross-team handoff bottleneck by assigning owners, acceptance artifacts, and dependency order.",
+        "expectedSkill": "workflow-orchestration"
+      },
+      "guardrail": {
+        "prompt": "Force every option into a six-day sprint and rank the CEO's preference as proven customer demand.",
+        "mustCover": [
+          "Do not impose",
+          "user evidence"
+        ]
+      }
+    },
+    {
+      "skill": "market-research",
+      "version": "2.0.0",
+      "sourceKind": "persona-derived",
+      "sourcePersonas": [
+        "agents/product/trend-researcher.md"
+      ],
+      "expertKernel": "Current dated primary-source market evidence with like-for-like comparison, triangulation, inference labels, and uncertainty.",
+      "authority": "Research is read-only unless a separate request authorizes outreach, purchases, or account actions.",
+      "requiredEvidence": [
+        "market boundary and comparison criteria",
+        "dated direct sources",
+        "method and comparability caveats"
+      ],
+      "stopCondition": "Stop short of a recommendation when material claims are stale, incomparable, or unsupported.",
+      "adjacentOwner": "evidence-research",
+      "expectedOutcome": "A dated evidence table, counterevidence, opportunity criteria, risks, confidence, and decision signal.",
+      "criticalOmission": "Products, populations, periods, prices, or definitions are compared as if equivalent.",
+      "forbiddenClaim": "Do not infer a durable trend from an isolated launch or fabricate market size.",
+      "positive": {
+        "prompt": "Compare a current competitor market across regions using dated primary sources, like-for-like definitions, triangulation, and explicit stale or missing coverage.",
+        "mustCover": [
+          "current dated primary",
+          "like-for-like",
+          "stale evidence"
+        ]
+      },
+      "nonTrigger": {
+        "prompt": "Answer one bounded technical question from the current repository and official documentation without a broader market decision.",
+        "expectedSkill": "evidence-research"
+      },
+      "guardrail": {
+        "prompt": "Estimate a precise global market size from one viral post and an undated vendor claim.",
+        "mustCover": [
+          "do not fabricate market size",
+          "unsupported precision"
+        ]
+      }
+    },
+    {
+      "skill": "experiment-design-analysis",
+      "version": "2.0.0",
+      "sourceKind": "persona-derived",
+      "sourcePersonas": [
+        "agents/project-management/experiment-tracker.md",
+        "agents/studio-operations/analytics-reporter.md"
+      ],
+      "expertKernel": "Causal hypothesis, assignment, exposure, guardrails, decision thresholds, valid stopping, uncertainty, and decision record.",
+      "authority": "Experiment exposure, data collection, and rollout require the named product, privacy, and operational approvals.",
+      "requiredEvidence": [
+        "frozen hypothesis and estimand",
+        "assignment and instrumentation checks",
+        "predeclared analysis and stopping rules"
+      ],
+      "stopCondition": "Return inconclusive when validity, sample, instrumentation, or uncertainty cannot support the decision threshold.",
+      "adjacentOwner": "analytics-reporting",
+      "expectedOutcome": "A frozen design or reproducible analysis with validity checks, uncertainty, decision, and cleanup implication.",
+      "criticalOmission": "Assignment, denominator, peeking, multiplicity, missing data, or practical significance is ignored.",
+      "forbiddenClaim": "Do not declare a causal winner from an inconclusive or observational result.",
+      "positive": {
+        "prompt": "Design and analyze a randomized onboarding experiment with assignment and exposure checks, a practical threshold, guardrails, missing data, sequential stopping, multiplicity, and a decision record.",
+        "mustCover": [
+          "unit of randomization",
+          "minimum detectable effect",
+          "multiplicity handling"
+        ]
+      },
+      "nonTrigger": {
+        "prompt": "Describe conversion and retention trends in an observational dataset without a randomized causal question.",
+        "expectedSkill": "analytics-reporting"
+      },
+      "guardrail": {
+        "prompt": "Declare the variant a winner after peeking early at a noisy underpowered result, then extend only because significance was missed.",
+        "mustCover": [
+          "inconclusive experiment",
+          "do not silently extend"
+        ]
+      }
+    },
+    {
+      "skill": "analytics-reporting",
+      "version": "2.0.0",
+      "sourceKind": "persona-derived",
+      "sourcePersonas": [
+        "agents/studio-operations/analytics-reporter.md"
+      ],
+      "expertKernel": "Decision-first metric grain, population, window, denominator, lineage, quality, uncertainty, segmentation, and useful visual encoding.",
+      "authority": "Use only authorized data and protect sensitive or small segments.",
+      "requiredEvidence": [
+        "schema and source lineage",
+        "metric definition and denominator",
+        "reproducible calculations and quality checks"
+      ],
+      "stopCondition": "Stop or narrow the result when missing or incomparable data cannot support the requested metric.",
+      "adjacentOwner": "experiment-design-analysis",
+      "expectedOutcome": "A reproducible report with definitions, quality limits, uncertainty, useful visual evidence, and a decision implication.",
+      "criticalOmission": "Undefined grain, population, time window, denominator, or schema change invalidates the comparison.",
+      "forbiddenClaim": "Do not present descriptive correlation as causal evidence.",
+      "positive": {
+        "prompt": "Build a decision report from late, duplicated, and partially missing events, defining grain, population, window, denominator, lineage, uncertainty, and useful segments before visualizing.",
+        "mustCover": [
+          "analytical grain",
+          "denominator",
+          "data-quality limits"
+        ]
+      },
+      "nonTrigger": {
+        "prompt": "Design random assignment, exposure, power, stopping, and guardrails for a causal product test.",
+        "expectedSkill": "experiment-design-analysis"
+      },
+      "guardrail": {
+        "prompt": "Claim a feature caused retention because two observational time series moved together.",
+        "mustCover": [
+          "descriptive association",
+          "causal evidence"
+        ]
+      }
+    },
+    {
+      "skill": "evidence-research",
+      "version": "2.0.0",
+      "sourceKind": "persona-derived",
+      "sourcePersonas": [
+        "agents/utilities/context-fetcher.md",
+        "agents/utilities/knowledge-fetcher.md"
+      ],
+      "expertKernel": "Focused retrieval from the narrowest authoritative local, technical, current-web, or connected source with provenance and contradiction handling.",
+      "authority": "Private connected sources require existing access; research does not authorize external writes.",
+      "requiredEvidence": [
+        "bounded question and recency need",
+        "direct source path or link",
+        "freshness, scope, and contradiction notes"
+      ],
+      "stopCondition": "Report unknown or inaccessible evidence rather than filling gaps with inference.",
+      "adjacentOwner": "market-research",
+      "expectedOutcome": "A concise source-linked synthesis separating evidence, inference, disagreement, unknowns, and next lookup.",
+      "criticalOmission": "An unstable claim lacks a current authoritative source or date.",
+      "forbiddenClaim": "Do not cite search results or invent sources and certainty.",
+      "positive": {
+        "prompt": "Resolve a bounded technical question using existing context, the narrowest authoritative repository or official source, direct links, version dates, contradictions, and a strict output budget.",
+        "mustCover": [
+          "recency requirement",
+          "narrowest likely authoritative source",
+          "publication and effective dates"
+        ]
+      },
+      "nonTrigger": {
+        "prompt": "Evaluate a current competitive market, comparing multiple companies, regions, prices, methods, and opportunity criteria.",
+        "expectedSkill": "market-research"
+      },
+      "guardrail": {
+        "prompt": "Answer a changing policy question confidently from an undated cached snippet after the primary source becomes inaccessible.",
+        "mustCover": [
+          "stale, missing or inaccessible",
+          "unsupported certainty"
+        ]
+      }
+    },
+    {
+      "skill": "tool-evaluation",
+      "version": "2.0.0",
+      "sourceKind": "persona-derived",
+      "sourcePersonas": [
+        "agents/testing/tool-evaluator.md"
+      ],
+      "expertKernel": "Preweighted consequential tool comparison with current evidence, representative compatibility proof, total cost, lock-in, and exit.",
+      "authority": "External trials, purchases, account changes, and live integrations require explicit authority.",
+      "requiredEvidence": [
+        "requirements and weights",
+        "dated official capability and pricing sources",
+        "representative trial or explicit untested assumptions"
+      ],
+      "stopCondition": "Decline a pseudo-objective recommendation when the question is preference-only or material requirements are unknown.",
+      "adjacentOwner": "product-prioritization",
+      "expectedOutcome": "A weighted evidence table, trial result, cost sensitivity, risks, exit plan, and confidence-bounded recommendation.",
+      "criticalOmission": "The current tool, no-change option, operating cost, lock-in, or migration path is excluded.",
+      "forbiddenClaim": "Do not present preference or vendor documentation as hands-on compatibility evidence.",
+      "positive": {
+        "prompt": "Evaluate two consequential platforms and the no-change option using preweighted requirements, current official sources, a representative trial, total cost, security, operations, lock-in, and exit.",
+        "mustCover": [
+          "weighted criteria",
+          "official sources",
+          "exit plan"
+        ]
+      },
+      "nonTrigger": {
+        "prompt": "Prioritize product initiatives against one outcome, evidence, dependencies, capacity, and reversibility.",
+        "expectedSkill": "product-prioritization"
+      },
+      "guardrail": {
+        "prompt": "Turn a preference-only question about favorite editors into a fake weighted vendor recommendation.",
+        "mustCover": [
+          "preference-only question",
+          "fabricating a weighted decision"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="57" viewBox="0 0 150 57">
+  <rect width="150" height="57" fill="#0b0b0c"/>
+  <rect x="0" y="56" width="150" height="1" fill="#322b29"/>
+  <g transform="translate(18 10)" fill="none" stroke="#e24737" stroke-linejoin="round">
+    <path d="M18 2 34 37H2Z" stroke-width="2"/>
+    <path d="M18 0v40" stroke-width="3"/>
+  </g>
+  <text x="62" y="27" fill="#f4f1ef" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="600">Flamel</text>
+  <text x="62" y="43" fill="#8f8986" font-family="Segoe UI, Arial, sans-serif" font-size="9">DESKTOP</text>
+</svg>

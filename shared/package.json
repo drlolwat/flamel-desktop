@@ -1,0 +1,8 @@
+{
+  "name": "@flamel/shared",
+  "version": "0.1.1",
+  "main": "./types.ts",
+  "exports": {
+    ".": "./types.ts"
+  }
+}

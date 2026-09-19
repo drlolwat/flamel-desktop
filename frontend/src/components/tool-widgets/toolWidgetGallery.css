@@ -1,0 +1,51 @@
+.tool-widget-gallery {
+  font-size: 12px;
+  min-height: 100vh;
+  padding: 28px;
+  background: var(--bg);
+}
+
+.tool-widget-gallery__frame {
+  width: min(920px, 100%);
+  margin: 0 auto;
+}
+
+.tool-widget-gallery__intro {
+  max-width: 620px;
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tool-widget-gallery__intro h1 {
+  margin: 0;
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.tool-widget-gallery__intro p {
+  margin: 5px 0 0;
+  color: var(--text-muted);
+}
+
+.tool-widget-gallery__stack {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.tool-widget-gallery__section-label {
+  margin: 13px 0 2px;
+  color: var(--text-dim);
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 560px) {
+  .tool-widget-gallery {
+    padding: 14px 10px 28px;
+  }
+}

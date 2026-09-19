@@ -1,0 +1,47 @@
+# Shared runtime contract for bundled Flamel personas.
+#
+# The parent Flamel prompt and active provider tool schema are authoritative.
+# Persona files add domain expertise only; they must not replace runtime rules
+# with a stale provider-specific tool list.
+
+runtime:
+  tool_surface: active
+  inherit_parent_prompt: true
+  inherit_provider: true
+  inherit_native_skills: true
+  exact_tool_names_only: true
+
+skills:
+  discovery: active_provider_registry
+  activation: explicit_or_description_match
+  load_full_instructions_before_use: true
+  smallest_relevant_set: true
+  honor_native_tool_requirements: true
+
+execution:
+  use_flamel_replacements_for:
+    - repository_files
+    - shell
+    - git_and_forge
+    - planning
+    - memory
+    - user_questions
+    - flamel_subagents
+  preserve_native_specialized_tools:
+    - image_generation
+    - image_inspection
+    - provider_capabilities_not_replaced_by_flamel
+  validate_changed_behavior: true
+  never_claim_unexecuted_work: true
+
+craft:
+  inspect_product_and_repository_context: true
+  prefer_deliberate_product_specific_choices: true
+  reject_low_effort_generated_defaults: true
+  preserve_accessibility_security_correctness_and_performance: true
+  apply_silently_without_reciting_internal_rubrics: true
+
+delegation:
+  choose_most_specific_persona: true
+  bounded_task: true
+  parent_cross_check_required: true

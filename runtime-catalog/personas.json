@@ -1,0 +1,361 @@
+{
+  "schemaVersion": 1,
+  "personas": [
+    {
+      "description": "Use this agent when a brand system needs specialist ownership across identity, voice, tokens, assets, or cross-surface consistency.",
+      "slug": "brand-guardian",
+      "source": "agents/design/brand-guardian.md",
+      "version": "2.0.0"
+    },
+    {
+      "description": "Use this agent when a product decision needs a bounded research plan, observed usability evidence, or careful synthesis.",
+      "slug": "ux-researcher",
+      "source": "agents/design/ux-researcher.md",
+      "version": "2.0.0"
+    },
+    {
+      "description": "Use this agent when data or ideas need a specialist visual narrative, illustration direction, or presentation asset.",
+      "slug": "visual-storyteller",
+      "source": "agents/design/visual-storyteller.md",
+      "version": "2.0.0"
+    },
+    {
+      "description": "Use this agent when a model-backed feature needs focused architecture, evaluation, retrieval, safety, latency, or cost work.",
+      "slug": "ai-engineer",
+      "source": "agents/engineering/ai-engineer.md",
+      "version": "2.0.0"
+    },
+    {
+      "description": "Use this agent when service boundaries, APIs, persistence, consistency, or distributed failure modes need isolated architectural attention.",
+      "slug": "backend-architect",
+      "source": "agents/engineering/backend-architect.md",
+      "version": "2.0.0"
+    },
+    {
+      "description": "Use this agent when CI/CD, infrastructure as code, observability, recovery, capacity, or operational cost needs specialist implementation.",
+      "slug": "devops-automator",
+      "source": "agents/engineering/devops-automator.md",
+      "version": "2.0.0"
+    },
+    {
+      "description": "Use this agent when client state, component architecture, data flow, accessibility, or web performance needs focused implementation.",
+      "slug": "frontend-developer",
+      "source": "agents/engineering/frontend-developer.md",
+      "version": "2.0.0"
+    },
+    {
+      "description": "Use this agent when native or cross-platform mobile architecture, lifecycle, permissions, device integration, or build delivery needs specialist ownership.",
+      "slug": "mobile-app-builder",
+      "source": "agents/engineering/mobile-app-builder.md",
+      "version": "2.0.0"
+    },
+    {
+      "description": "Use this agent when a time-bounded proof of concept must answer one named technical or product uncertainty.",
+      "slug": "rapid-prototyper",
+      "source": "agents/engineering/rapid-prototyper.md",
+      "version": "2.0.0"
+    },
+    {
+      "description": "Use this agent when a current app-store listing, metadata experiment, localization set, or submission package needs focused expertise.",
+      "slug": "app-store-optimizer",
+      "source": "agents/marketing/app-store-optimizer.md",
+      "version": "2.0.0"
+    },
+    {
+      "description": "Use this agent when verified source material must become a polished, brand-aligned deliverable for a defined audience and format.",
+      "slug": "content-creator",
+      "source": "agents/marketing/content-creator.md",
+      "version": "2.0.0"
+    },
+    {
+      "description": "Use this agent when feedback from multiple sources needs source-tagged themes, segment caveats, and decision-oriented synthesis.",
+      "slug": "feedback-synthesizer",
+      "source": "agents/product/feedback-synthesizer.md",
+      "version": "2.0.0"
+    },
+    {
+      "description": "Use this agent when a current market, competitor, or cultural question needs dated evidence and explicit uncertainty.",
+      "slug": "trend-researcher",
+      "source": "agents/product/trend-researcher.md",
+      "version": "2.0.0"
+    },
+    {
+      "description": "Use this agent when a launch needs cross-functional readiness, dependency ownership, communications, and an evidence-based go/no-go record.",
+      "slug": "project-shipper",
+      "source": "agents/project-management/project-shipper.md",
+      "version": "2.0.0"
+    },
+    {
+      "description": "Use this agent when metrics, segmentation, uncertainty, or visualization needs a decision-oriented analytical report.",
+      "slug": "analytics-reporter",
+      "source": "agents/studio-operations/analytics-reporter.md",
+      "version": "2.0.0"
+    },
+    {
+      "description": "Use this agent when budgets, forecasts, unit economics, reconciliation, or scenario sensitivity needs focused financial analysis.",
+      "slug": "finance-tracker",
+      "source": "agents/studio-operations/finance-tracker.md",
+      "version": "2.0.0"
+    },
+    {
+      "description": "Use this agent when runtime health, observability, capacity, recovery, infrastructure cost, or maintenance risk needs specialist ownership.",
+      "slug": "infrastructure-maintainer",
+      "source": "agents/studio-operations/infrastructure-maintainer.md",
+      "version": "2.0.0"
+    },
+    {
+      "description": "Use this agent when a jurisdiction-specific policy, privacy, regulatory, or contractual risk needs sourced issue spotting.",
+      "slug": "legal-compliance-checker",
+      "source": "agents/studio-operations/legal-compliance-checker.md",
+      "version": "2.0.0"
+    },
+    {
+      "description": "Use this agent when a support case, escalation path, response standard, or knowledge-base gap needs evidence-based specialist handling.",
+      "slug": "support-responder",
+      "source": "agents/studio-operations/support-responder.md",
+      "version": "2.0.0"
+    },
+    {
+      "description": "Use this agent when API contracts, integration behavior, resilience, concurrency, or load characteristics need focused verification.",
+      "slug": "api-tester",
+      "source": "agents/testing/api-tester.md",
+      "version": "2.0.0"
+    },
+    {
+      "description": "Use this agent when a representative workload needs baseline, profiling, performance-budget, or before-and-after evidence.",
+      "slug": "performance-benchmarker",
+      "source": "agents/testing/performance-benchmarker.md",
+      "version": "2.0.0"
+    },
+    {
+      "description": "Use this agent when test outputs need normalized failure, flakiness, coverage, duration, or quality-trend analysis.",
+      "slug": "test-results-analyzer",
+      "source": "agents/testing/test-results-analyzer.md",
+      "version": "2.0.0"
+    },
+    {
+      "description": "Use this agent when a consequential framework, vendor, or service choice needs weighted criteria and hands-on compatibility evidence.",
+      "slug": "tool-evaluator",
+      "source": "agents/testing/tool-evaluator.md",
+      "version": "2.0.0"
+    },
+    {
+      "description": "Use this agent when a bounded question needs focused local, technical, current-web, or connected-source research.",
+      "slug": "knowledge-fetcher",
+      "source": "agents/utilities/knowledge-fetcher.md",
+      "version": "2.0.0"
+    }
+  ],
+  "sourceLedger": [
+    {
+      "source": "agents/design/brand-guardian.md",
+      "owner": "brand-guardian",
+      "disposition": "retained_persona"
+    },
+    {
+      "source": "agents/design/ux-researcher.md",
+      "owner": "ux-researcher",
+      "disposition": "retained_persona"
+    },
+    {
+      "source": "agents/design/visual-storyteller.md",
+      "owner": "visual-storyteller",
+      "disposition": "retained_persona"
+    },
+    {
+      "source": "agents/engineering/ai-engineer.md",
+      "owner": "ai-engineer",
+      "disposition": "retained_persona"
+    },
+    {
+      "source": "agents/engineering/backend-architect.md",
+      "owner": "backend-architect",
+      "disposition": "retained_persona"
+    },
+    {
+      "source": "agents/engineering/devops-automator.md",
+      "owner": "devops-automator",
+      "disposition": "retained_persona"
+    },
+    {
+      "source": "agents/engineering/frontend-developer.md",
+      "owner": "frontend-developer",
+      "disposition": "retained_persona"
+    },
+    {
+      "source": "agents/engineering/mobile-app-builder.md",
+      "owner": "mobile-app-builder",
+      "disposition": "retained_persona"
+    },
+    {
+      "source": "agents/engineering/rapid-prototyper.md",
+      "owner": "rapid-prototyper",
+      "disposition": "retained_persona"
+    },
+    {
+      "source": "agents/marketing/app-store-optimizer.md",
+      "owner": "app-store-optimizer",
+      "disposition": "retained_persona"
+    },
+    {
+      "source": "agents/marketing/content-creator.md",
+      "owner": "content-creator",
+      "disposition": "retained_persona"
+    },
+    {
+      "source": "agents/product/feedback-synthesizer.md",
+      "owner": "feedback-synthesizer",
+      "disposition": "retained_persona"
+    },
+    {
+      "source": "agents/product/trend-researcher.md",
+      "owner": "trend-researcher",
+      "disposition": "retained_persona"
+    },
+    {
+      "source": "agents/project-management/project-shipper.md",
+      "owner": "project-shipper",
+      "disposition": "retained_persona"
+    },
+    {
+      "source": "agents/studio-operations/analytics-reporter.md",
+      "owner": "analytics-reporter",
+      "disposition": "retained_persona"
+    },
+    {
+      "source": "agents/studio-operations/finance-tracker.md",
+      "owner": "finance-tracker",
+      "disposition": "retained_persona"
+    },
+    {
+      "source": "agents/studio-operations/infrastructure-maintainer.md",
+      "owner": "infrastructure-maintainer",
+      "disposition": "retained_persona"
+    },
+    {
+      "source": "agents/studio-operations/legal-compliance-checker.md",
+      "owner": "legal-compliance-checker",
+      "disposition": "retained_persona"
+    },
+    {
+      "source": "agents/studio-operations/support-responder.md",
+      "owner": "support-responder",
+      "disposition": "retained_persona"
+    },
+    {
+      "source": "agents/testing/api-tester.md",
+      "owner": "api-tester",
+      "disposition": "retained_persona"
+    },
+    {
+      "source": "agents/testing/performance-benchmarker.md",
+      "owner": "performance-benchmarker",
+      "disposition": "retained_persona"
+    },
+    {
+      "source": "agents/testing/test-results-analyzer.md",
+      "owner": "test-results-analyzer",
+      "disposition": "retained_persona"
+    },
+    {
+      "source": "agents/testing/tool-evaluator.md",
+      "owner": "tool-evaluator",
+      "disposition": "retained_persona"
+    },
+    {
+      "source": "agents/utilities/knowledge-fetcher.md",
+      "owner": "knowledge-fetcher",
+      "disposition": "retained_persona"
+    },
+    {
+      "source": "agents/bonus/joker.md",
+      "owner": "tone-and-humor",
+      "disposition": "extracted_skill"
+    },
+    {
+      "source": "agents/bonus/studio-coach.md",
+      "owner": "workflow-orchestration",
+      "disposition": "extracted_skill"
+    },
+    {
+      "source": "agents/design/ui-designer.md",
+      "owner": "ui-implementation",
+      "disposition": "extracted_skill"
+    },
+    {
+      "source": "agents/design/whimsy-injector.md",
+      "owner": "interaction-polish",
+      "disposition": "extracted_skill"
+    },
+    {
+      "source": "agents/engineering/test-writer-fixer.md",
+      "owner": "test-engineering",
+      "disposition": "extracted_skill"
+    },
+    {
+      "source": "agents/marketing/growth-hacker.md",
+      "owner": "growth-strategy",
+      "disposition": "extracted_skill"
+    },
+    {
+      "source": "agents/marketing/instagram-curator.md",
+      "owner": "current-platform-content",
+      "disposition": "extracted_skill"
+    },
+    {
+      "source": "agents/marketing/reddit-community-builder.md",
+      "owner": "current-platform-content",
+      "disposition": "extracted_skill"
+    },
+    {
+      "source": "agents/marketing/tiktok-strategist.md",
+      "owner": "current-platform-content",
+      "disposition": "extracted_skill"
+    },
+    {
+      "source": "agents/marketing/twitter-engager.md",
+      "owner": "current-platform-content",
+      "disposition": "extracted_skill"
+    },
+    {
+      "source": "agents/product/sprint-prioritizer.md",
+      "owner": "product-prioritization",
+      "disposition": "extracted_skill"
+    },
+    {
+      "source": "agents/project-management/experiment-tracker.md",
+      "owner": "experiment-design-analysis",
+      "disposition": "extracted_skill"
+    },
+    {
+      "source": "agents/project-management/studio-producer.md",
+      "owner": "workflow-orchestration",
+      "disposition": "extracted_skill"
+    },
+    {
+      "source": "agents/testing/workflow-optimizer.md",
+      "owner": "workflow-orchestration",
+      "disposition": "extracted_skill"
+    },
+    {
+      "source": "agents/utilities/context-fetcher.md",
+      "owner": "evidence-research",
+      "disposition": "extracted_skill"
+    },
+    {
+      "source": "agents/utilities/git-workflow.md",
+      "owner": "git-release-workflow",
+      "disposition": "extracted_skill"
+    },
+    {
+      "source": "agents/utilities/date-checker.md",
+      "owner": "native-time",
+      "disposition": "native_wrapper"
+    },
+    {
+      "source": "agents/utilities/file-creator.md",
+      "owner": "native-file-operations",
+      "disposition": "native_wrapper"
+    }
+  ]
+}

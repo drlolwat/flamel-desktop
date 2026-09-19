@@ -1,0 +1,22 @@
+{
+  "name": "flamel-runtime",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "cd desktop && cargo tauri dev",
+    "build": "node scripts/build-sidecars.mjs release && python scripts/dependency-notices.py desktop/resources/notices && cd desktop && cargo tauri build",
+    "build:ui": "npm run build:local --workspace frontend",
+    "check": "cargo check --workspace --all-targets",
+    "test": "cargo test -p flamel-engine --lib && npm test --workspace frontend",
+    "audit:source": "python3 scripts/audit-source.py"
+  },
+  "overrides": {
+    "dompurify": "3.4.13",
+    "nanoid": "3.3.18",
+    "postcss": "8.5.23"
+  }
+}

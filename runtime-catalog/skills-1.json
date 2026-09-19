@@ -1,0 +1,472 @@
+{
+  "schemaVersion": 1,
+  "skills": [
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "debugging",
+      "version": "1.0.0",
+      "title": "Debugging",
+      "description": "Trace failures from reproduction to verified root cause",
+      "category": "engineering",
+      "instructions": "Reproduce the failure, gather direct evidence, isolate the smallest causal boundary, implement a focused fix, and rerun the exact failing path plus relevant regressions.",
+      "triggers": [
+        "bug",
+        "crash",
+        "error",
+        "failure",
+        "debug"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "migrations",
+      "version": "1.0.0",
+      "title": "Database migrations",
+      "description": "Plan and verify backward-compatible data changes",
+      "category": "data",
+      "instructions": "Inspect the existing schema and access patterns. Prefer additive idempotent migrations, preserve rollback compatibility, validate existing data, and test both fresh and upgraded databases.",
+      "triggers": [
+        "migration",
+        "schema",
+        "database"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "ui-implementation",
+      "version": "1.0.0",
+      "title": "UI implementation",
+      "description": "Build polished interfaces that match Flamel conventions",
+      "category": "design",
+      "instructions": "Inspect existing components and tokens, implement the complete workflow with loading, empty, error, keyboard, desktop, and mobile states, then verify using browser screenshots.",
+      "triggers": [
+        "ui",
+        "frontend",
+        "component",
+        "design"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "ui-implementation",
+      "version": "2.0.0",
+      "title": "UI implementation",
+      "description": "Build polished interfaces that match Flamel conventions",
+      "category": "design",
+      "instructions": "Treat interface work as authored product design. Inspect the existing product, components, tokens, real content, information density, and user workflow before choosing a visual direction. Preserve the established brand and adapt existing primitives where they fit, but do not assemble stock components without product-specific judgment. Do not default to gradient or glass effects, bento/card grids, nested card walls, excessive pills or rounded containers, emoji as interface icons, generic hero or marketing copy, fake data, or decorative motion; use them only when the product context clearly supports them. Define hierarchy, typography, spacing, density, color, affordances, and interaction states deliberately. Implement loading, empty, error, disabled, keyboard, focus, reduced-motion, desktop, and mobile behavior as part of the workflow. Render and inspect the result at representative desktop and narrow widths, then correct clipping, density, contrast, focus order, and motion. Apply this standard silently: report concrete design decisions and verification evidence rather than reciting the internal rubric.",
+      "triggers": [
+        "ui",
+        "frontend",
+        "component",
+        "design"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "security-review",
+      "version": "1.0.0",
+      "title": "Security review",
+      "description": "Review auth, secrets, boundaries, and abuse paths",
+      "category": "security",
+      "instructions": "Map trust boundaries, verify authentication and authorization independently, test tenant isolation, redact secrets, validate untrusted inputs, and record residual risks with evidence.",
+      "triggers": [
+        "security",
+        "auth",
+        "secret",
+        "permission"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "deployment",
+      "version": "1.0.0",
+      "title": "Deployment",
+      "description": "Ship repeatable deployments with rollback and health evidence",
+      "category": "operations",
+      "instructions": "Preserve persistent data and secrets, build reproducibly, replace runtime state cleanly, verify health and version identity, and retain an explicit rollback path.",
+      "triggers": [
+        "deploy",
+        "docker",
+        "release",
+        "workhorse"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "incident-response",
+      "version": "1.0.0",
+      "title": "Incident response",
+      "description": "Stabilize, investigate, recover, and document incidents",
+      "category": "operations",
+      "instructions": "Establish impact and current state, stop further damage, capture evidence before mutation, recover using the least risky path, verify service health, and record follow-up actions.",
+      "triggers": [
+        "incident",
+        "outage",
+        "production"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "release-verification",
+      "version": "1.0.0",
+      "title": "Release verification",
+      "description": "Prove a release is functional across supported surfaces",
+      "category": "quality",
+      "instructions": "Run focused unit and integration checks, build all affected targets, exercise the real user workflow, inspect runtime logs and process cleanup, and report exact version and evidence.",
+      "triggers": [
+        "release",
+        "verify",
+        "qa",
+        "test"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "brand-systems",
+      "version": "1.0.0",
+      "title": "Brand systems",
+      "description": "Use when establishing, evolving, or auditing a product brand system; not for one-off cosmetic tweaks.",
+      "category": "design",
+      "instructions": "Collect the product strategy, audiences, current assets, surfaces, and constraints. Define or audit identity, voice, tokens, assets, accessibility, exceptions, and migration impact as one implementable system. Deliver a guideline or scoped delta with an asset inventory and rendered or measured evidence; do not invent brand research.",
+      "triggers": [
+        "brand system audit",
+        "design token governance"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "ux-validation",
+      "version": "1.0.0",
+      "title": "UX validation",
+      "description": "Use for research design, observed usability evidence, or synthesis; not for invented users or unsupported findings.",
+      "category": "research",
+      "instructions": "State the decision and research question, choose a proportionate method, and record participant and source limits. Separate observations, interpretation, and recommendations. Deliver a study plan or source-tagged synthesis with confidence and unresolved questions; never fabricate participants, quotes, metrics, or behavior.",
+      "triggers": [
+        "user research design",
+        "usability evidence"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "debugging",
+      "version": "2.0.0",
+      "title": "Debugging",
+      "description": "Trace failures from reproduction to verified root cause",
+      "category": "engineering",
+      "instructions": "Reproduce the exact symptom in the smallest realistic path and record expected versus observed behavior. Before editing, trace every caller and sibling path through the shared boundary, then use discriminating checks to eliminate hypotheses. Fix the root cause once at the narrowest shared owner; preserve validation and error handling at trust boundaries. Rerun the exact reproduction, affected callers, and the smallest meaningful regression set. If the failure cannot be reproduced or evidence does not identify a cause, stop and report the unknowns instead of applying a speculative patch. Deliver the causal chain, changed boundary, commands, observed results, and residual risk.",
+      "triggers": [
+        "reproducible bug root cause",
+        "shared caller failure",
+        "race condition diagnosis"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "migrations",
+      "version": "2.0.0",
+      "title": "Database migrations",
+      "description": "Plan and verify backward-compatible data changes",
+      "category": "data",
+      "instructions": "Map the current schema, data volume and quality, every reader and writer, deployment order, and rollback limits before changing data. Prefer an additive expand, resumable backfill, compatibility window, then contract sequence; keep migrations idempotent and bound locks, batches, defaults, NULL handling, indexes, dual reads or writes, and cleanup. Prove a fresh install, upgrade from representative legacy data, mixed-version compatibility, interrupted backfill resume, rollback, and final constraints. Stop before an irreversible or destructive step when backup, compatibility, ownership, or data-loss behavior is unclear. Deliver the phase order, SQL or schema delta, measurements, validation results, and rollback trigger.",
+      "triggers": [
+        "database compatibility migration",
+        "expand backfill contract",
+        "schema rollback planning"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "security-review",
+      "version": "2.0.0",
+      "title": "Security review",
+      "description": "Review auth, secrets, boundaries, and abuse paths",
+      "category": "security",
+      "instructions": "Identify assets, actors, entry points, trust boundaries, tenants, data flows, and realistic abuse paths before testing. Verify authentication and authorization separately, including object ownership, least privilege, tenant isolation, session and request-forgery defenses, untrusted input, secrets, dependency boundaries, rate limits, and security logging without sensitive data. Use non-destructive evidence and distinguish confirmed findings from hypotheses; stop before live exploitation or external mutation without explicit authority. Deliver each finding with affected boundary, severity rationale, reproduction evidence, remediation, verification, and residual risk; never claim that an untested surface is safe.",
+      "triggers": [
+        "authentication authorization review",
+        "tenant isolation threat model",
+        "secret abuse path audit"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "deployment",
+      "version": "2.0.0",
+      "title": "Deployment",
+      "description": "Ship repeatable deployments with rollback and health evidence",
+      "category": "operations",
+      "instructions": "Confirm explicit deployment authority, target environment, immutable artifact and exact revision before execution. Freeze preconditions, checks, migration compatibility, persistent state, secrets, dependencies, traffic plan, health criteria, rollback procedure and owners. Build reproducibly, record configuration without exposing secrets, and use a staged rollout with bounded waits and one observable promotion decision at a time. Stop before execution when authority, artifact identity, backup or migration compatibility, health evidence, or rollback is missing; never improvise around a failed gate. After each authorized stage, verify version identity, user-critical health, metrics, logs and cleanup, then either proceed or invoke the documented rollback. Deliver executed commands or workflow identifiers, observed results, active revision, residual risk and rollback status; do not claim deployment from a build or dispatch receipt alone.",
+      "triggers": [
+        "controlled deployment execution",
+        "staged rollout rollback",
+        "runtime release promotion"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "incident-response",
+      "version": "2.0.0",
+      "title": "Incident response",
+      "description": "Stabilize, investigate, recover, and document incidents",
+      "category": "operations",
+      "instructions": "Confirm incident authority, communication owner, affected service, current impact and safety constraints. Stabilize first with the least risky reversible action, while preserving logs, metrics, traces, timestamps and state needed for investigation. Keep an evidence-backed impact timeline and separate observations, hypotheses, mitigation, recovery and root cause. Bound the blast radius, record every mutation and decision, and communicate material impact, current status, owner and next update without speculation. Stop before an action outside incident authority or with unknown side effects; escalate instead of trading data integrity or security for speed. Recovery validation must prove the affected user workflow, dependencies, queues, error and saturation signals, and sustained health before closure or rollback. Deliver the timeline, evidence, mitigation, recovery validation, communications, unresolved risks and owned follow-up; never claim root cause without discriminating evidence.",
+      "triggers": [
+        "active production incident",
+        "service outage stabilization",
+        "incident recovery validation"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "release-verification",
+      "version": "2.0.0",
+      "title": "Release verification",
+      "description": "Prove a release is functional across supported surfaces",
+      "category": "quality",
+      "instructions": "Freeze the exact release identity, target environment, supported surface and user-critical workflows before testing. Confirm the running revision and configuration, then combine focused unit, integration, migration and end-to-end checks with direct runtime evidence from logs, metrics, queues, processes and resource cleanup. Exercise success, authentication and authorization, failure, retry, compatibility and rollback-sensitive paths proportionate to the release. Preserve test data isolation and distinguish passed, failed, blocked and not run; never present a dispatch, build, health endpoint or partial suite as functional proof. For every supported surface, link the command or observation to the expected outcome and actual evidence, including console or network failures where relevant. Deliver a release verdict, exact evidence, uncovered surfaces, residual risk and rollback trigger. Deployment owns rollout execution, and Release readiness owns the go/no-go dependency record.",
+      "triggers": [
+        "release functional verification",
+        "deployed revision proof",
+        "cross surface release check"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "brand-systems",
+      "version": "2.0.0",
+      "title": "Brand systems",
+      "description": "Use when establishing, evolving, or auditing a product brand system; not for one-off cosmetic tweaks.",
+      "category": "design",
+      "instructions": "Start with product strategy, audiences, positioning, promise, personality, real surfaces, current assets and operational constraints. Audit what exists before defining or changing naming, marks, color, typography, iconography, illustration, imagery, voice, terminology, design tokens and component expression. Connect every identity choice to a product or audience reason, preserve accessibility across contrast, type, motion and language, and make exceptions explicit rather than creating silent variants. Maintain an asset inventory with source, owner, license, format, dimensions, usage and deprecation state; define governance, review ownership and a migration plan for affected product, marketing, support and internal surfaces. Test the system against representative real content and rendered surfaces, including narrow layouts and failure states, and separate measured consistency from subjective preference. Do not invent customer research, brand history or source evidence. Deliver the implementable system or scoped delta, token and asset changes, examples and exceptions, accessibility evidence, migration order, owners and unresolved decisions. UI implementation owns application of the system within product interfaces.",
+      "triggers": [
+        "brand identity system",
+        "cross surface brand governance",
+        "brand token migration"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "ui-implementation",
+      "version": "3.0.0",
+      "title": "UI implementation",
+      "description": "Build polished interfaces that match Flamel conventions",
+      "category": "design",
+      "instructions": "Treat interface work as authored product design. Inspect the actual product, user workflow, real content and data density, current components, design tokens, typography, icon system and interaction conventions before editing. Reuse established primitives when they fit, then deliberately author information architecture, hierarchy, density, spacing, color, copy, affordances and one coherent visual direction. Do not default to generic hero copy, card walls or nested cards, excessive pills and rounded containers, gradient or glass effects, emoji or arbitrary icon sets, fake records, stock placeholders, or raw tool-output slabs; use a pattern only when this product and workflow justify it. Present complex results with a readable summary and bounded preview, keeping raw data accessible through intentional disclosure. Implement the real workflow with loading, empty, partial, stale, success, error, retry, disabled and destructive states, long content and overflow, semantic structure, labels, keyboard and focus order, contrast, touch targets, screen-reader feedback and reduced-motion behavior. Complete representative desktop and narrow layouts without horizontal overflow. Use native platform controls, the existing design system and installed dependencies before adding code or packages. Frontend engineering owns component state, data flow and performance architecture; UI implementation owns the visual and interaction result. Render and inspect the actual interface at representative desktop and narrow widths, keyboard focus and reduced motion, checking console and network failures, then correct the observed defects. Do not replace a requested implementation, generated visual or rendered artifact with prose, a text wireframe or a checklist. Report concise authored decisions and direct rendered evidence rather than reciting this rubric.",
+      "triggers": [
+        "authored product interface",
+        "responsive interaction implementation",
+        "design system ui craft"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "ux-validation",
+      "version": "2.0.0",
+      "title": "UX validation",
+      "description": "Use for research design, observed usability evidence, or synthesis; not for invented users or unsupported findings.",
+      "category": "research",
+      "instructions": "Name the product decision, research question, target population, known evidence, constraints and consequence of being wrong. Choose a proportionate method, recruitment and sampling approach, tasks, consent and privacy handling, observation protocol and success signals; distinguish generative, evaluative and longitudinal questions. Preserve participant or source identifiers safely and separate direct observations, quotes, behavioral measures, interpretation, contradictions and recommendations. Analyze important segments and counterevidence, state confidence and sampling or method limits, and connect findings to the decision rather than producing decorative research. Do not fabricate participants, users, quotes, behavior, metrics or consensus. When no real observations exist, deliver a study plan rather than findings; when evidence is incomplete, label unknowns and the next discriminating research. Deliver the plan or source-linked synthesis, observations, interpretation, confidence, limitations, decision implications and unresolved questions.",
+      "triggers": [
+        "usability research evidence",
+        "product research study design",
+        "observed user behavior synthesis"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "ui-implementation",
+      "version": "4.0.0",
+      "title": "UI implementation",
+      "description": "Build polished interfaces that match Flamel conventions Requires working customer journeys and recorded browser acceptance for websites and SaaS.",
+      "category": "design",
+      "instructions": "Treat interface work as authored product design. Inspect the actual product, user workflow, real content and data density, current components, design tokens, typography, icon system and interaction conventions before editing. Reuse established primitives when they fit, then deliberately author information architecture, hierarchy, density, spacing, color, copy, affordances and one coherent visual direction. Do not default to generic hero copy, card walls or nested cards, excessive pills and rounded containers, gradient or glass effects, emoji or arbitrary icon sets, fake records, stock placeholders, or raw tool-output slabs; use a pattern only when this product and workflow justify it. Present complex results with a readable summary and bounded preview, keeping raw data accessible through intentional disclosure. Implement the real workflow with loading, empty, partial, stale, success, error, retry, disabled and destructive states, long content and overflow, semantic structure, labels, keyboard and focus order, contrast, touch targets, screen-reader feedback and reduced-motion behavior. Complete representative desktop and narrow layouts without horizontal overflow. Use native platform controls, the existing design system and installed dependencies before adding code or packages. Frontend engineering owns component state, data flow and performance architecture; UI implementation owns the visual and interaction result. Render and inspect the actual interface at representative desktop and narrow widths, keyboard focus and reduced motion, checking console and network failures, then correct the observed defects. Do not replace a requested implementation, generated visual or rendered artifact with prose, a text wireframe or a checklist. Report concise authored decisions and direct rendered evidence rather than reciting this rubric.\n\n## Working website acceptance\nTreat website delivery as the actual customer product. Before layout, trace audience, primary outcome, anonymous entry, authenticated workspace, server APIs and persistence. For SaaS, implement the real sign-in/session/authorization flow and customer actions with server-persisted state; verify reload, empty/error/loading/success states, and checkout/provisioning when in scope. Never substitute localStorage drafts, demo controls, disconnected forms, a logged-out private console, or a marketing shell for an authorized working service. Missing integration credentials require a precise blocker while independent work continues, never a fake replacement or a completion claim.\n\nWrite for customers: explain what they can accomplish, name real actions and remove protocol-inventory taglines, implementation disclaimers, generic feature filler and ornamental badges. Choose page hierarchy, typography, content density, spacing, imagery and navigation for this product. Avoid a generic card grid and decorative gradient as the default. Inspect actual public, onboarding and authenticated screens as distinct product experiences.\n\nMandatory browser review: register plan(action=require_browser_review) before implementing website work. Exercise the real primary journey and failures; for SaaS test signed-out redirects, sign-in, authorization and persistence after reload. Capture and visually inspect desktop and mobile browser screenshots using browser_inspect with screenshot included. Check focus/keyboard, contrast, responsive overflow and console/network errors. Record successful distinct desktopToolId/mobileToolId, functionalToolId, revision, journeys with URLs/auth states/assertions/results, and visualFindings via plan(action=browser_review, browser_review={...}). These must reference successful tools from the plan session after review was required. Fix defects and repeat affected checks. Missing browser access or evidence keeps acceptance unfinished. Build success, invented screenshots, a prose claim, and tool-word matching alone do not prove a website works or looks appropriate.\n\nCompatibility: inspect the exposed plan action schema. If an older Flamel runtime lacks require_browser_review/browser_review, keep a distinct final browser-acceptance item with actual screenshot and functional evidence in its notes. Never invent unavailable actions or bypass review; do not claim the older runtime enforces receipt validation.\n",
+      "triggers": [
+        "authored product interface",
+        "responsive interaction implementation",
+        "design system ui craft"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "ui-implementation",
+      "version": "5.0.0",
+      "title": "UI implementation",
+      "description": "Build polished interfaces that match Flamel conventions Requires working customer journeys and recorded browser acceptance for websites and SaaS.",
+      "category": "design",
+      "instructions": "Treat interface work as authored product design. Inspect the actual product, user workflow, real content and data density, current components, design tokens, typography, icon system and interaction conventions before editing. Reuse established primitives when they fit, then deliberately author information architecture, hierarchy, density, spacing, color, copy, affordances and one coherent visual direction. Do not default to generic hero copy, card walls or nested cards, excessive pills and rounded containers, gradient or glass effects, emoji or arbitrary icon sets, fake records, stock placeholders, or raw tool-output slabs; use a pattern only when this product and workflow justify it. Present complex results with a readable summary and bounded preview, keeping raw data accessible through intentional disclosure. Implement the real workflow with loading, empty, partial, stale, success, error, retry, disabled and destructive states, long content and overflow, semantic structure, labels, keyboard and focus order, contrast, touch targets, screen-reader feedback and reduced-motion behavior. Complete representative desktop and narrow layouts without horizontal overflow. Use native platform controls, the existing design system and installed dependencies before adding code or packages. Frontend engineering owns component state, data flow and performance architecture; UI implementation owns the visual and interaction result. Render and inspect the actual interface at representative desktop and narrow widths, keyboard focus and reduced motion, checking console and network failures, then correct the observed defects. Do not replace a requested implementation, generated visual or rendered artifact with prose, a text wireframe or a checklist. Report concise authored decisions and direct rendered evidence rather than reciting this rubric.\n\n## Working website acceptance\nTreat website delivery as the actual customer product. Before layout, trace audience, primary outcome, anonymous entry, authenticated workspace, server APIs and persistence. For SaaS, implement the real sign-in/session/authorization flow and customer actions with server-persisted state; verify reload, empty/error/loading/success states, and checkout/provisioning when in scope. Never substitute localStorage drafts, demo controls, disconnected forms, a logged-out private console, or a marketing shell for an authorized working service. Missing integration credentials require a precise blocker while independent work continues, never a fake replacement or a completion claim.\n\nWrite for customers: explain what they can accomplish, name real actions and remove protocol-inventory taglines, implementation disclaimers, generic feature filler and ornamental badges. Choose page hierarchy, typography, content density, spacing, imagery and navigation for this product. Avoid a generic card grid and decorative gradient as the default. Inspect actual public, onboarding and authenticated screens as distinct product experiences.\n\nMandatory browser review: register plan(action=require_browser_review) before implementing website work. Exercise the real primary journey and failures; for SaaS test signed-out redirects, sign-in, authorization and persistence after reload. Capture and visually inspect desktop and mobile browser screenshots using browser_inspect with screenshot included. Check focus/keyboard, contrast, responsive overflow and console/network errors. Record successful distinct desktopToolId/mobileToolId, functionalToolId, revision, journeys with URLs/auth states/assertions/results, and visualFindings via plan(action=browser_review, browser_review={...}). These must reference successful tools from the plan session after review was required. Fix defects and repeat affected checks. Missing browser access or evidence keeps acceptance unfinished. Build success, invented screenshots, a prose claim, and tool-word matching alone do not prove a website works or looks appropriate.\n\nCompatibility: inspect the exposed plan action schema. If an older Flamel runtime lacks require_browser_review/browser_review, keep a distinct final browser-acceptance item with actual screenshot and functional evidence in its notes. Never invent unavailable actions or bypass review; do not claim the older runtime enforces receipt validation.\n\n\n## Customer-copy review\nFor SaaS marketing, the main heading and first sentence must identify a concrete customer job or outcome. Check whether the headline could be pasted unchanged onto an unrelated product: if so, rewrite it. Avoid empty poetic slogans, faux stationery manifestos, and atmospheric fillers such as \u201ca little more order\u201d, \u201cless X, more Y\u201d, or \u201ca quieter way\u201d when they displace the actual offer. A brand voice can be distinctive while saying exactly what the customer gets. Every visible action must lead to the named working flow; every claim must match implemented behavior. Prefer a real product view or a purposeful visual over a decorative mock document repeating vague benefits. Inspect copy in the actual rendered screenshots, as well as checking interaction and layout.\n",
+      "triggers": [
+        "authored product interface",
+        "responsive interaction implementation",
+        "design system ui craft"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    }
+  ]
+}

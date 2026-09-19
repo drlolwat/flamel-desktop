@@ -1,0 +1,12 @@
+[workspace]
+members = ["engine", "desktop", "protocol"]
+resolver = "2"
+
+[profile.release]
+codegen-units = 1
+lto = "thin"
+panic = "abort"
+strip = "symbols"
+
+[patch.crates-io]
+wayland-scanner = { path = "vendor/wayland-scanner" }

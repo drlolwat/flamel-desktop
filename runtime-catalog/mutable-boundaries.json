@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "decisions": [
+    {
+      "source": "src-server/src/db/capabilities.rs::seed_marketplace",
+      "artifactKind": "marketplace_metadata",
+      "decision": "active",
+      "mutablePresentation": [
+        "title",
+        "description",
+        "category",
+        "publisher",
+        "status"
+      ],
+      "compiledEnforcement": [
+        "adapter identity",
+        "transport",
+        "remote URL",
+        "auth kind",
+        "permissions",
+        "credential handling"
+      ],
+      "compatibility": "Signed overlays update compiled official slugs only; unknown slugs or authority fields fail activation.",
+      "fallback": "Compiled seed remains available offline and no longer overwrites an active presentation overlay on restart.",
+      "rollback": "Reimport the previous verified snapshot."
+    },
+    {
+      "source": "src-server/src/goal_worker.rs::available_models",
+      "artifactKind": "model_metadata",
+      "decision": "active",
+      "mutablePresentation": [
+        "label",
+        "supported reasoning subset",
+        "default reasoning choice"
+      ],
+      "compiledEnforcement": [
+        "provider classification",
+        "known model IDs",
+        "provider binary detection",
+        "credential routing",
+        "reasoning ceiling"
+      ],
+      "compatibility": "Overlays may narrow capabilities for known compiled IDs; they cannot add or remove IDs or expand compiled reasoning modes.",
+      "fallback": "Compiled model metadata remains the safe bootstrap and preserves active sessions.",
+      "rollback": "Read the previous active snapshot; no session row is rewritten."
+    },
+    {
+      "source": "src-server/src/routes/chat.rs::FLAMEL_SHARED_INSTRUCTIONS and src-server/resources/ponytail/SKILL.md",
+      "artifactKind": "prompt_overlay",
+      "decision": "deferred",
+      "reason": "Cross-provider skill evaluation is not complete because the Claude provider lane is unavailable; safety/auth/tool-routing bootstrap remains compiled.",
+      "compiledEnforcement": [
+        "authorization",
+        "tool routing",
+        "risk and destructive-action rules",
+        "provider bootstrap",
+        "mode parsing"
+      ]
+    },
+    {
+      "source": "src-server/src/developer_packs.rs",
+      "artifactKind": "developer_pack_display",
+      "decision": "rejected_for_now",
+      "reason": "Presentation and native endpoints, verbs, scopes, and auth behavior are still co-owned; splitting now would duplicate a native contract."
+    },
+    {
+      "source": "src-server/src/mcp_tool_catalog.rs",
+      "artifactKind": "mcp_display_help",
+      "decision": "rejected_for_now",
+      "reason": "Display copy is still coupled to destructive/file-mutation/prior-read risk and renderer/schema contracts."
+    }
+  ]
+}

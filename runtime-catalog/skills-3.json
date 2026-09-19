@@ -1,0 +1,435 @@
+{
+  "schemaVersion": 1,
+  "skills": [
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "content-strategy",
+      "version": "1.0.0",
+      "title": "Content strategy",
+      "description": "Use when source material must become an intentional, brand-aligned deliverable; not for unsupported filler content.",
+      "category": "content",
+      "instructions": "Confirm audience, objective, source facts, voice, format, distribution context, and approvals. Build a clear editorial angle, adapt structure to the medium, preserve factual traceability, and flag claims needing review. Deliver publication-ready content with source notes; do not fabricate testimonials, statistics, product behavior, or citations.",
+      "triggers": [
+        "editorial content adaptation",
+        "cross channel content"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "growth-strategy",
+      "version": "1.0.0",
+      "title": "Growth strategy",
+      "description": "Use only when the user explicitly requests acquisition, retention, or growth-loop strategy; never auto-activate for product work.",
+      "category": "growth",
+      "instructions": "Require a named objective, audience, baseline, channel constraints, unit economics, consent and brand guardrails, and measurement access. Frame bounded reversible hypotheses with mechanism, cost, guardrails, and stop criteria. Reject spam, dark patterns, fake scarcity, platform-rule evasion, and guaranteed-growth claims.",
+      "triggers": [
+        "growth experiment strategy",
+        "acquisition retention loop"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": false
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "current-platform-content",
+      "version": "1.0.0",
+      "title": "Current platform content",
+      "description": "Use when adapting approved content for a named social or community platform; not for generic growth strategy.",
+      "category": "content",
+      "instructions": "Confirm platform, community, audience, source message, account voice, and moderation constraints. Verify current official limits and applicable community rules before adapting format or interaction. Deliver channel-ready variants and a source note. Do not provide spam tactics, automation evasion, fabricated trends, or guaranteed virality.",
+      "triggers": [
+        "social platform post",
+        "channel community content"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "feedback-synthesis",
+      "version": "1.0.0",
+      "title": "Feedback synthesis",
+      "description": "Use for multi-source feedback themes and prioritization; not for treating anecdotes as representative demand.",
+      "category": "research",
+      "instructions": "Define the decision, sources, date range, segments, and sampling bias. Preserve source identifiers, distinguish frequency from severity, separate observed language from interpretation, and retain contradictions. Deliver source-tagged themes, segment caveats, confidence, and follow-up questions; never invent feedback.",
+      "triggers": [
+        "feedback theme synthesis",
+        "voice of customer"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "product-prioritization",
+      "version": "1.0.0",
+      "title": "Product prioritization",
+      "description": "Use for outcome-based roadmap or backlog trade-offs; not for imposing a fixed sprint cadence.",
+      "category": "product",
+      "instructions": "Establish outcome, constraints, evidence, dependencies, risk, reversibility, and capacity before ranking work. Apply an explicit decision model without hiding uncertainty, then test the ordering against critical dependencies. Deliver a prioritized sequence with rationale, confidence, rejected alternatives, and re-evaluation signals.",
+      "triggers": [
+        "product priority tradeoff",
+        "roadmap sequencing"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "market-research",
+      "version": "1.0.0",
+      "title": "Market research",
+      "description": "Use for current competitor, market, or cultural opportunity research; not when local product evidence is sufficient.",
+      "category": "research",
+      "instructions": "Define market, geography, audience, time horizon, comparison dimensions, and decision threshold. Use dated primary sources, distinguish fact from inference, triangulate material claims, and record conflicts. Deliver an evidence table, opportunity criteria, risks, and recommendation with direct citations; do not infer durable trends from isolated viral examples.",
+      "triggers": [
+        "market opportunity research",
+        "competitor trend analysis"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "experiment-design-analysis",
+      "version": "1.0.0",
+      "title": "Experiment design and analysis",
+      "description": "Use for controlled experiment hypotheses, assignment, statistics, or decision records; not for unmeasured shipping.",
+      "category": "analytics",
+      "instructions": "State hypothesis, primary metric, guardrails, assignment unit, eligibility, detectable effect, sample and stop rules, and contamination risks before launch. Preserve reproducibility and examine validity, uncertainty, and segment effects without p-hacking. Deliver the design or result with data-quality checks, intervals, caveats, and a decision.",
+      "triggers": [
+        "experiment design statistics",
+        "ab test analysis"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "release-readiness",
+      "version": "1.0.0",
+      "title": "Release readiness",
+      "description": "Use for launch dependencies, communication, and go/no-go decisions; not as a substitute for deployment or release proof.",
+      "category": "delivery",
+      "instructions": "Inventory scope, owners, dependencies, migrations, support and communication needs, observability, approvals, rollback linkage, and launch criteria. Track only evidence-backed readiness and expose blockers. Deliver a go/no-go record with unresolved risks and references. Depend on Deployment for execution and Release verification for proof.",
+      "triggers": [
+        "launch go no go",
+        "release readiness checklist"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "workflow-orchestration",
+      "version": "1.0.0",
+      "title": "Workflow orchestration",
+      "description": "Use for genuinely cross-functional work or a diagnosed coordination stall; not to force delegation onto simple tasks.",
+      "category": "delivery",
+      "instructions": "Decompose the objective into bounded outcomes, assign ownership, record dependencies and decision rights, and parallelize only independent work. Prevent duplicate effort, define handoff artifacts and review points, and update plans from observed progress. Deliver a concrete ownership or dependency change; avoid motivational roleplay and unnecessary agents.",
+      "triggers": [
+        "multi team workflow",
+        "handoff dependency design"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "analytics-reporting",
+      "version": "1.0.0",
+      "title": "Analytics reporting",
+      "description": "Use for decision-oriented metric definitions, analysis, or visualization; not for decorative dashboards without a question.",
+      "category": "analytics",
+      "instructions": "Start with the decision, audience, metric definitions, source lineage, time window, segments, and data-quality limits. Reconcile units and denominators, quantify uncertainty, and choose visuals that reveal rather than decorate. Deliver reproducible calculations, a concise narrative, anomalies, and recommended action; label estimates and missing data.",
+      "triggers": [
+        "metric report design",
+        "decision dashboard analysis"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "release-readiness",
+      "version": "2.0.0",
+      "title": "Release readiness",
+      "description": "Use for launch dependencies, communication, and go/no-go decisions; not as a substitute for deployment or release proof.",
+      "category": "delivery",
+      "instructions": "Define the release scope, target, decision owner, launch criteria and evidence window. Map owners and dependencies across product, engineering, data and migrations, security and compliance, operations and observability, support, communications, rollout and rollback; name each acceptance artifact and due state. Track only evidence-backed readiness, distinguish ready, blocked, accepted risk and unknown, and surface the critical path, capacity conflicts and rollback owner. Produce a go/no-go recommendation with unresolved risks, decision rights and explicit conditions for reconsideration. A missing owner, unsafe migration, absent rollback, unverified critical workflow or unresolved approval is a no-go unless the authorized decision owner records an accepted risk. Release readiness coordinates dependencies but does not deploy or claim the release works: Deployment owns execution and Release verification owns functional proof. Deliver the compact readiness record, owners, linked evidence, communications status, rollout and rollback references, verdict and residual risks.",
+      "triggers": [
+        "evidence based release readiness",
+        "launch dependency go no go",
+        "release owner communication"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "workflow-orchestration",
+      "version": "2.0.0",
+      "title": "Workflow orchestration",
+      "description": "Use for genuinely cross-functional work or a diagnosed coordination stall; not to force delegation onto simple tasks.",
+      "category": "delivery",
+      "instructions": "Use this workflow only when an objective spans multiple actual actors or subsystems, or evidence shows a coordination bottleneck; keep simple one-owner work direct. Map the current flow through inputs, outputs, decisions, dependencies, handoffs, wait time, work in progress, error or rework rates, capacity constraints and acceptance criteria. Identify the limiting dependency from evidence, then make the smallest ownership, sequencing, work-in-progress, automation or communication change that relieves it without creating a new control layer. Parallelize only independent work, name decision rights and one accountable owner per outcome, and define every handoff as an artifact plus an acceptance contract, deadline and failure path. Do not mandate delegation, fixed sprint rituals, master-agent roleplay or motivational coaching. Update durable plans or work records from observed state, preserve rollback for process changes, and measure cycle time, quality and load after the change. Deliver the current and proposed flow, bottleneck evidence, owners, dependencies, handoffs, capacity tradeoffs, review cadence and next measurable check.",
+      "triggers": [
+        "cross functional dependency orchestration",
+        "measured workflow bottleneck",
+        "capacity handoff redesign"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "feedback-synthesis",
+      "version": "2.0.0",
+      "title": "Feedback synthesis",
+      "description": "Use for multi-source feedback themes and prioritization; not for treating anecdotes as representative demand.",
+      "category": "research",
+      "instructions": "Define the product decision, corpus, source channels, collection dates, target population, segments and known selection or survivorship bias. Preserve privacy-safe source identifiers and important verbatim language, deduplicate repeated records without erasing coordinated or recurring signals, and keep channel, segment and time provenance attached through coding. Separate theme frequency, denominator, severity, user impact, strategic relevance and representativeness; a common support issue is not automatically broad market demand, and a rare issue may still be critical. Record contradictions, outliers, missing segments and changes over time, and distinguish observations from interpretation and recommendation. Use a transparent coding or clustering method, show examples and counterexamples, and state confidence without invented precision. Do not fabricate feedback, quotes, counts or consensus. Deliver source-tagged themes, frequency and severity by relevant denominator, segment and sampling limits, contradictions, confidence, prioritized implications and the next evidence needed.",
+      "triggers": [
+        "multi source feedback synthesis",
+        "qualitative theme provenance",
+        "feedback severity frequency analysis"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "product-prioritization",
+      "version": "2.0.0",
+      "title": "Product prioritization",
+      "description": "Use for outcome-based roadmap or backlog trade-offs; not for imposing a fixed sprint cadence.",
+      "category": "product",
+      "instructions": "Name the outcome, decision horizon, users, constraints, available capacity and evidence before ordering work. For each option record expected mechanism and impact, confidence and source, dependencies and critical path, effort range, operational and opportunity cost, security or compliance risk, reversibility, learning value and consequence of delay. Choose an explicit decision model such as weighted criteria, cost of delay or RICE only when its inputs fit; expose assumptions, normalize units and test sensitivity instead of hiding judgment behind a score. Sequence dependencies and risk-reduction work, distinguish committed, candidate and rejected options, and state what leaves the plan when scope enters. Do not impose a fixed sprint cadence, manufacture consensus or treat stakeholder rank as user evidence. Deliver the prioritized sequence, rationale, assumptions, capacity allocation, dependencies, risks, rejected alternatives, confidence and measurable re-evaluation signals.",
+      "triggers": [
+        "outcome based product prioritization",
+        "capacity roadmap tradeoff",
+        "reversible backlog sequencing"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "market-research",
+      "version": "2.0.0",
+      "title": "Market research",
+      "description": "Use for current competitor, market, or cultural opportunity research; not when local product evidence is sufficient.",
+      "category": "research",
+      "instructions": "Define the decision, market boundary, geography, audience, time horizon, comparison dimensions and evidence threshold. For facts that can change, use current dated primary or authoritative sources first, identify source incentives and methodology, and triangulate material claims across independent evidence where practical. Compare like-for-like products, prices, periods, populations and definitions; preserve publication and effective dates, units, currencies and missing coverage. Separate fact, source claim, calculation and inference, and label uncertainty, contradictions and stale evidence. Treat isolated launches, anecdotes and viral examples as leads rather than durable trends, and do not fabricate market size or unsupported precision. Deliver a dated evidence table with direct sources, methods and comparability caveats, competitor or opportunity criteria, counterevidence, risks, recommendation confidence and the next signal that would change the decision.",
+      "triggers": [
+        "current market competitor evidence",
+        "dated opportunity research",
+        "market comparability analysis"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "experiment-design-analysis",
+      "version": "2.0.0",
+      "title": "Experiment design and analysis",
+      "description": "Use for controlled experiment hypotheses, assignment, statistics, or decision records; not for unmeasured shipping.",
+      "category": "analytics",
+      "instructions": "Define the decision, causal hypothesis, estimand, primary metric, guardrails and practical decision threshold before exposure. Specify eligibility, unit of randomization and analysis, assignment, exposure, control and variants, instrumentation, sample-ratio checks, contamination, interference and novelty or seasonality risks. Use baseline variance and the chosen error tradeoff to set a minimum detectable effect, power or another justified sample rule; predeclare duration, stopping and sequential-monitoring rules, multiplicity handling, planned segments, missing-data and attrition treatment, and the analysis method. Validate event quality and assignment before interpreting outcomes. Report effect sizes and uncertainty intervals, not a p-value alone; distinguish statistical from practical significance, correlation from causation outside randomized evidence, and exploratory from confirmatory findings. An inconclusive experiment is a valid result—do not silently extend, peek, pool segments or declare a winner. Deliver the frozen design or reproducible analysis, data-quality checks, results, caveats, decision record, cleanup or rollout implication and follow-up.",
+      "triggers": [
+        "controlled experiment design",
+        "randomized assignment analysis",
+        "experiment decision record"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "analytics-reporting",
+      "version": "2.0.0",
+      "title": "Analytics reporting",
+      "description": "Use for decision-oriented metric definitions, analysis, or visualization; not for decorative dashboards without a question.",
+      "category": "analytics",
+      "instructions": "Start with the decision, audience, source lineage and schema. Freeze the analytical grain, population, inclusion and exclusion rules, time window and timezone, cohort or exposure logic, metric formula, numerator, denominator and units before calculating. Audit missing, late, duplicated and censored records, joins, identity resolution, schema changes and coverage; reconcile totals to an authoritative reference where possible and record data-quality limits. Use reproducible queries or calculations, compare like-for-like periods and segments, quantify uncertainty and sensitivity, and distinguish descriptive association from causal evidence. Segment only where it can change the decision and protect small or sensitive groups. Choose a table or visual encoding that clarifies the comparison, distribution, trend or uncertainty; do not decorate an undefined metric. Deliver definitions, sources, reproducible calculation, quality checks, result and uncertainty, useful visual evidence, anomalies, decision implication and unresolved data gaps without unsupported precision.",
+      "triggers": [
+        "decision oriented analytics",
+        "metric denominator lineage",
+        "segmented uncertainty report"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "content-strategy",
+      "version": "2.0.0",
+      "title": "Content strategy",
+      "description": "Use when source material must become an intentional, brand-aligned deliverable; not for unsupported filler content.",
+      "category": "content",
+      "instructions": "Establish the audience, objective, source material, factual claims, brand voice, format, channel, distribution context, accessibility needs, rights and review owner. Extract the message and evidence before choosing an angle, structure and call to action; keep each material claim traceable to a source, label inference, and flag legal, product or factual claims that need approval. Adapt hierarchy, length, pacing, terminology, metadata and interaction to the medium rather than cloning one draft across channels, while preserving meaning and a consistent voice. Use inclusive plain language, descriptive links and headings, alt text or captions where relevant, and respect licensed assets, quotations and privacy. Produce the requested real deliverable and verify format constraints, links, names, dates and claims. Do not fabricate testimonials, statistics, customer outcomes, product behavior, citations or approval. Deliver publication-ready content, source notes, voice and adaptation decisions, accessibility and format checks, approval flags and unresolved inputs.",
+      "triggers": [
+        "source based content deliverable",
+        "brand aligned editorial adaptation",
+        "publication ready content"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "growth-strategy",
+      "version": "2.0.0",
+      "title": "Growth strategy",
+      "description": "Use only when the user explicitly requests acquisition, retention, or growth-loop strategy; never auto-activate for product work.",
+      "category": "growth",
+      "instructions": "Activate only for an explicit growth request. Name the target audience, funnel stage, product value, baseline and denominator, constraint, time horizon, measurement access, budget, unit economics, consent, privacy, brand and platform boundaries. Diagnose the measured acquisition, activation, retention, referral or revenue bottleneck before proposing a tactic. Frame each bounded reversible hypothesis with mechanism, channel, audience, expected range, cost, attribution, primary metric, guardrails, experiment or rollout design, stop rule and owner; include CAC, LTV or payback assumptions only when inputs support them. Prefer durable user value and permissioned loops over exploitation. Reject spam, scraping or automation evasion, dark patterns, fake scarcity or social proof, hidden incentives, deceptive referrals, platform-rule workarounds, bought engagement and guaranteed virality or exponential growth. Do not launch campaigns, buy media, contact users or alter accounts without explicit authority. Deliver the prioritized hypothesis set, economics and sensitivity, measurement plan, risks, ethical and platform checks, decision rules and evidence needed to scale or stop.",
+      "triggers": [
+        "explicit growth strategy",
+        "acquisition retention hypothesis",
+        "ethical growth loop design"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": false
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "current-platform-content",
+      "version": "2.0.0",
+      "title": "Current platform content",
+      "description": "Use when adapting approved content for a named social or community platform; not for generic growth strategy.",
+      "category": "content",
+      "instructions": "Require a named platform and surface, account and audience, approved source message, goal, voice, locale, asset rights, moderation constraints and posting authority. Before adapting content, verify current dated official platform documentation for formats, limits, accessibility, disclosures, commercial content, automation and enforcement, plus the current rules and pinned guidance of any specific community. Treat historical posting cadence, hashtag counts, timing, algorithm claims, trends and viral thresholds as non-authoritative until current evidence and account analytics support them. Create platform-native copy and asset direction that preserves the source meaning, credits creators, labels sponsorship or synthetic media when required, and includes captions or alt text where supported. Reject spam, engagement pods, vote manipulation, deceptive trend insertion, undisclosed promotion, follow or message automation evasion, fabricated trends and guaranteed reach. Deliver ready variants, source and policy dates, format and rights checks, moderation risks, uncertainty and an approval note. Do not post, reply, message, follow, buy promotion or mutate an account without explicit authority and an execution receipt.",
+      "triggers": [
+        "current social platform adaptation",
+        "community rule content",
+        "platform native approved copy"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    }
+  ]
+}

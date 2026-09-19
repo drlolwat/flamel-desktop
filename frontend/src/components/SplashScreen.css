@@ -1,0 +1,37 @@
+.splash-page { min-height:100vh; height:100vh; overflow:auto; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:76px 24px 36px; background:var(--bg); color:var(--text); }
+.splash-titlebar {position:fixed;inset:0 0 auto;height:36px;display:flex;align-items:center;justify-content:space-between;padding-left:14px;border-bottom:1px solid var(--border-soft);background:var(--bg);color:var(--text-muted);font-size:11px;z-index:2;user-select:none;}
+.splash-window-controls {display:flex;height:100%;}
+.splash-window-controls button {width:44px;background:transparent;color:var(--text-muted);border:0;font-size:17px;cursor:pointer;}
+.splash-window-controls button:hover {background:var(--surface-3);color:var(--text);}
+.splash-window-controls button:last-child:hover {background:var(--accent);color:var(--accent-contrast);}
+.splash-card {width:min(100%,420px);margin:auto 0;display:flex;flex-direction:column;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:28px;flex-shrink:0;}
+.splash-brand {display:flex;align-items:center;gap:12px;color:var(--accent-text);margin-bottom:10px;}
+.splash-brand>span {color:var(--text);font-size:23px;font-weight:600;letter-spacing:-.8px;}
+.splash-product {font-size:11px;letter-spacing:.2px;font-weight:400;color:var(--text-muted);margin-left:10px;border:1px solid var(--border);border-radius:var(--radius-sm);padding:3px 7px;vertical-align:middle;}
+.splash-card h1 {font-size:18px;line-height:1.4;font-weight:600;letter-spacing:-.2px;}
+.splash-intro {font-size:13px;color:var(--text-muted);margin-bottom:12px;}
+.splash-local-label {font-size:10px;font-weight:600;letter-spacing:1px;color:var(--text-dim);}
+.splash-card button,.splash-card summary {width:100%;text-align:center;font-size:12px;font-weight:500;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--surface-2);color:var(--text);cursor:pointer;transition:background var(--transition-fast),border-color var(--transition-fast);}
+.splash-card button:hover,.splash-card summary:hover {background:var(--surface-3);border-color:var(--text-dim);}
+.splash-card button.splash-primary {background:var(--accent);border-color:var(--accent);color:var(--accent-contrast);}
+.splash-card button.splash-primary:hover {background:var(--accent-hover);border-color:var(--accent-hover);}
+.splash-card button:disabled {opacity:.5;cursor:wait;}
+.splash-card :is(button,input,select,summary):focus-visible {outline:2px solid var(--accent);outline-offset:3px;}
+.splash-hint {font-size:11px;color:var(--text-dim);text-align:center;}
+.splash-divider {display:flex;align-items:center;gap:14px;margin:10px 0 2px;font-size:9px;letter-spacing:1px;color:var(--text-dim);}
+.splash-divider::before,.splash-divider::after {content:"";height:1px;flex:1;background:var(--border-soft);}
+.splash-card label {display:flex;flex-direction:column;gap:5px;font-size:11px;color:var(--text-muted);}
+.splash-card input:not([type=checkbox]),.splash-card select {width:100%;min-width:0;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-md);padding:9px 10px;font-size:12px;color:var(--text);color-scheme:dark;}
+.splash-card input[type=checkbox] {accent-color:var(--accent);}
+.splash-card summary {list-style:none;}
+.splash-card summary::-webkit-details-marker {display:none;}
+.splash-card details[open] summary {border-color:var(--accent-border);}
+.splash-error {padding:10px 12px;border:1px solid var(--accent-border);border-radius:var(--radius-md);background:var(--error-glow);color:var(--error);font-size:12px;overflow-wrap:anywhere;}
+@media(max-height:720px) {.splash-page {justify-content:flex-start;}.splash-card {margin:0;}}
+@media(max-width:480px) {.splash-page {padding:56px 14px 20px;}.splash-card {padding:24px;}.splash-card h1 {font-size:20px;}}
+.splash-server-form {display:grid;gap:12px;margin-top:12px;}
+.splash-servers {display:flex;flex-direction:column;gap:8px;max-height:240px;overflow:auto;}
+.splash-card button.splash-server {display:flex;flex-direction:column;gap:4px;text-align:left;}
+.splash-server small {font-size:11px;color:var(--text-muted);overflow-wrap:anywhere;}
+.splash-empty {font-size:12px;color:var(--text-muted);padding:8px 0;}
+.splash-card button.splash-text-button {border-color:transparent;background:transparent;color:var(--text-muted);padding:5px;}

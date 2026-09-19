@@ -1,0 +1,435 @@
+{
+  "schemaVersion": 1,
+  "skills": [
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "financial-analysis",
+      "version": "1.0.0",
+      "title": "Financial analysis",
+      "description": "Use for budgets, forecasts, unit economics, or scenario decisions; not without current authoritative inputs.",
+      "category": "finance",
+      "instructions": "Confirm currency, period, accounting basis, source statements, operational assumptions, and horizon. Reconcile inputs, separate actuals from assumptions, model base and material alternatives, and test sensitivity to major drivers. Deliver formulas, source dates, variances, scenarios, and decision thresholds; never invent financial records.",
+      "triggers": [
+        "financial scenario model",
+        "unit economics analysis"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "legal-compliance",
+      "version": "1.0.0",
+      "title": "Legal and compliance review",
+      "description": "Use for jurisdiction-specific issue spotting, policy review, or compliance risk; not as a substitute for legal counsel.",
+      "category": "risk",
+      "instructions": "Establish jurisdiction, product surface, data and user flows, effective dates, contractual context, and risk tolerance. Verify current primary legal or regulator sources and distinguish requirements from interpretation. Deliver an issue list, citations, severity, remediation options, open questions, and clear counsel-escalation points.",
+      "triggers": [
+        "legal compliance review",
+        "regulatory issue spotting"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "support-operations",
+      "version": "1.0.0",
+      "title": "Support operations",
+      "description": "Use for evidence-based support responses, escalation design, or knowledge gaps; not for pretending account actions occurred.",
+      "category": "operations",
+      "instructions": "Gather the exact symptom, environment, timeline, prior steps, entitlements, and account-safe evidence. Separate diagnosis from policy, propose the least risky next step, and escalate with a complete handoff when authority is missing. Deliver a clear response plus case notes and knowledge gaps; never fabricate refunds, access, or resolution.",
+      "triggers": [
+        "support response workflow",
+        "escalation knowledge gap"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "api-verification",
+      "version": "1.0.0",
+      "title": "API verification",
+      "description": "Use for contract, integration, resilience, or load testing of an API; not for unsupported synthetic success claims.",
+      "category": "quality",
+      "instructions": "Identify contract, environments, auth boundaries, clients, isolation, rate limits, and failure expectations. Build reproducible positive, negative, compatibility, concurrency, and resilience checks. Preserve fixtures and cleanup, distinguish observed from simulated results, and report exact requests, latency distributions, failures, and coverage gaps.",
+      "triggers": [
+        "api contract testing",
+        "service resilience test"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "performance-analysis",
+      "version": "1.0.0",
+      "title": "Performance analysis",
+      "description": "Use for baselines, profiling, budgets, or before-and-after performance evidence; not for universal target claims.",
+      "category": "quality",
+      "instructions": "Define the user-critical workload, environment, dataset, warmup, concurrency, measurement method, and budget. Establish a repeatable baseline, profile before optimizing, change one causal boundary at a time, and rerun enough samples to expose variance. Deliver commands, distributions, bottleneck evidence, comparison, regressions, and limits.",
+      "triggers": [
+        "performance benchmark profile",
+        "latency resource regression"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "test-result-analysis",
+      "version": "1.0.0",
+      "title": "Test-result analysis",
+      "description": "Use for normalized failure, flakiness, coverage, or quality trends; not for raw pass-count summaries.",
+      "category": "quality",
+      "instructions": "Record suite identity, commit, environment, retries, duration, and result format. Normalize failures by root signature, distinguish regressions from infrastructure and flakiness, preserve denominator and history, and quantify confidence. Deliver a prioritized report with linked evidence, trend caveats, and the next discriminating check.",
+      "triggers": [
+        "test result trend",
+        "flaky failure analysis"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "tool-evaluation",
+      "version": "1.0.0",
+      "title": "Tool evaluation",
+      "description": "Use for a consequential framework, vendor, or service choice; not for preference-only recommendations.",
+      "category": "research",
+      "instructions": "Define workflows, constraints, budget, lock-in tolerance, security and data boundaries, operating burden, and exit plan. Verify current official capabilities and pricing, run a representative check where practical, and score weighted criteria. Deliver evidence, costs, risks, compatibility findings, rejected alternatives, and a reversible recommendation.",
+      "triggers": [
+        "tool selection evaluation",
+        "vendor compatibility comparison"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "evidence-research",
+      "version": "1.0.0",
+      "title": "Evidence research",
+      "description": "Use when a decision needs focused local, technical, current-web, or connected-source evidence; not for established facts.",
+      "category": "research",
+      "instructions": "Clarify the question, decision, recency need, acceptable sources, and output budget. Search the narrowest authoritative source first and expand only to resolve gaps or contradictions. Deliver a concise synthesis separating evidence, inference, disagreement, and unknowns with dates and direct links.",
+      "triggers": [
+        "source backed research",
+        "current documentation synthesis"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "git-release-workflow",
+      "version": "1.0.0",
+      "title": "Git release workflow",
+      "description": "Use for status-first branch, commit, pull-request, or release hygiene; not without authority for repository mutations.",
+      "category": "delivery",
+      "instructions": "Inspect repository status, branch, diff, and policy before mutation. Preserve unrelated changes, group coherent work, use Flamel Git, and verify checks and remote state after consequential steps. Deliver exact branch, commit or pull-request identifiers, check results, and recovery notes. Deployment owns rollout.",
+      "triggers": [
+        "branch commit pull request",
+        "git release hygiene"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "tone-and-humor",
+      "version": "1.0.0",
+      "title": "Tone and humor",
+      "description": "Use only after an explicit request for humor or approved playful copy; never auto-activate in high-stakes contexts.",
+      "category": "content",
+      "instructions": "Confirm audience, setting, brand voice, sensitivities, placement, and intensity. Offer a small set of concise options and explain meaningful tone differences. Keep humor inclusive and subordinate to comprehension. Avoid it in safety, legal, medical, financial, incident, destructive-action, or error contexts unless explicitly requested and acceptable.",
+      "triggers": [
+        "explicit humor request",
+        "playful copy request"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": false
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "api-verification",
+      "version": "2.0.0",
+      "title": "API verification",
+      "description": "Use for contract, integration, resilience, or load testing of an API; not for unsupported synthetic success claims.",
+      "category": "quality",
+      "instructions": "Freeze the API specification, environment, client, authentication, tenant, data and permitted mutation scope, then record reproducible requests and correlation identifiers. Exercise success, invalid input, unauthenticated, unauthorized, forbidden and missing-resource behavior; verify compatibility, versioning, pagination, idempotency, rate limits, concurrency, timeouts, retries, partial failure and cleanup. For load, use representative data, warmup, bounded concurrency and latency distributions with error and resource rates. Do not write to or load-test an external or production system without explicit authority, and label simulated faults as simulated. Deliver exact requests, statuses, distributions, observed failures, cleanup evidence and coverage gaps.",
+      "triggers": [
+        "api contract resilience test",
+        "idempotency concurrency verification",
+        "api load distribution"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "performance-analysis",
+      "version": "2.0.0",
+      "title": "Performance analysis",
+      "description": "Use for baselines, profiling, budgets, or before-and-after performance evidence; not for universal target claims.",
+      "category": "quality",
+      "instructions": "Tie the work to a user-critical workload and explicit budget. Record code revision, environment, hardware, dataset, cache state, warmup, concurrency, measurement method and noise controls; establish a repeatable baseline with enough samples to report percentiles, throughput, errors, variance and relevant CPU, memory, I/O or network use. Profile before optimizing, form one causal hypothesis, change one boundary, and rerun the identical workload for regressions and tradeoffs. Never infer a universal target or improvement from a single average or non-representative environment. Deliver commands, raw-summary location, distributions, bottleneck evidence, before-and-after comparison, uncertainty and remaining limits.",
+      "triggers": [
+        "performance baseline profile",
+        "latency percentile regression",
+        "resource throughput budget"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "git-release-workflow",
+      "version": "2.0.0",
+      "title": "Git release workflow",
+      "description": "Use for status-first branch, commit, pull-request, or release hygiene; not without authority for repository mutations.",
+      "category": "delivery",
+      "instructions": "Begin with repository status, current branch, upstream and remotes, scoped diff, recent history and repository policy. Preserve unrelated and user-authored changes, resolve the exact files and base, and separate explicit authority for branch creation, staging, commit, push, pull request, merge, tag and release; never infer a later mutation from approval for an earlier one. Use the typed Flamel Git action for repository and hosted operations. Group only coherent scoped changes, use an accurate project-conventional message, and run the relevant checks before any authorized remote write. Avoid history rewriting, force-push, destructive branch operations, broad staging and secret exposure unless explicitly requested and safely resolved. After mutation, verify the resulting status, commit, remote identifiers and checks; do not claim a commit, push, pull request, merge or release without the returned receipt. Deliver exact identifiers, included changes, validation, remote state and recovery notes. Deployment owns runtime rollout.",
+      "triggers": [
+        "status first git workflow",
+        "authorized branch commit push",
+        "pull request release hygiene"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "test-result-analysis",
+      "version": "2.0.0",
+      "title": "Test-result analysis",
+      "description": "Use for normalized failure, flakiness, coverage, or quality trends; not for raw pass-count summaries.",
+      "category": "quality",
+      "instructions": "Ingest actual raw artifacts and normalize suite, test identity, commit, environment, runner and configuration, shard, attempt and retries, timestamps, duration, outcome and denominator. Preserve skipped, canceled, missing and not-run results instead of treating them as passes. Cluster stable failure signatures without conflating distinct causes, compare like-for-like history, and separate deterministic regressions, infrastructure failures and suspected flakiness. Require alternating outcomes under comparable code and environment or equivalent repeated evidence before labeling a test flaky. Report line, branch, path and changed-code coverage only with their denominators and gaps; state confidence and sampling limits for every trend. Do not claim root cause without linked diagnostics or a quality trend from raw pass counts, changed suite composition or missing history. Deliver prioritized signatures, affected owners and surfaces, trend and coverage evidence, uncertainty, artifacts and the next discriminating check.",
+      "triggers": [
+        "normalized test failure analysis",
+        "flakiness coverage confidence",
+        "historical quality trend evidence"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "evidence-research",
+      "version": "2.0.0",
+      "title": "Evidence research",
+      "description": "Use when a decision needs focused local, technical, current-web, or connected-source evidence; not for established facts.",
+      "category": "research",
+      "instructions": "Clarify the bounded question, decision, recency requirement, source constraints, access permissions and output budget. Check existing context first, then search the narrowest likely authoritative source: current repository and project records for local behavior, official documentation or primary research for technical claims, current primary web sources for changing facts, and authorized connected data for private evidence. Retrieve only the sections needed, but expand enough to resolve material gaps, definitions or contradictions. Preserve file paths, versions, publication and effective dates, direct links and source scope; compare claims against the same product, jurisdiction, period and definition. Separate quoted or observed evidence, calculation, inference, disagreement and unknowns, and say when evidence is stale, missing or inaccessible. Avoid duplicate document dumps, search-result citations, unsupported certainty and invented sources. Deliver a concise source-linked synthesis, contradictions, freshness and confidence, decision implication and the next targeted lookup if the question remains unresolved.",
+      "triggers": [
+        "focused source evidence retrieval",
+        "current authoritative research",
+        "local documentation synthesis"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "tool-evaluation",
+      "version": "2.0.0",
+      "title": "Tool evaluation",
+      "description": "Use for a consequential framework, vendor, or service choice; not for preference-only recommendations.",
+      "category": "research",
+      "instructions": "Confirm the decision, representative workflows, current stack, must-have and optional requirements, scale, budget, time horizon, data and security boundaries, compliance needs and exit constraints. Keep the current tool and no-change option in the comparison. Define weighted criteria and disqualifiers before scoring, then verify current capabilities, licensing and pricing with dated official sources; compare like-for-like editions, usage and support assumptions. Evaluate integration effort, developer and operator experience, reliability, performance, observability, security posture, data residency, maintenance, total cost, lock-in, migration and reversibility. Run a bounded representative compatibility check when practical, labeling documentation claims, observed trial evidence and untested assumptions separately; obtain authority before external trials, purchases or account changes. For a preference-only question, answer as preference rather than fabricating a weighted decision. Deliver the criteria and weights, evidence table, trial result, costs and sensitivity, risks, rejected options, exit plan, recommendation and confidence.",
+      "triggers": [
+        "consequential tool evaluation",
+        "vendor framework comparison",
+        "technology exit cost analysis"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "financial-analysis",
+      "version": "2.0.0",
+      "title": "Financial analysis",
+      "description": "Use for budgets, forecasts, unit economics, or scenario decisions; not without current authoritative inputs.",
+      "category": "finance",
+      "instructions": "Define the decision, entity and scope, currency, period and timezone, cash or accrual basis, accounting treatment, horizon and materiality. Inventory each authoritative input with owner and as-of date, reconcile units and periods, preserve source statements, and separate actuals, commitments, estimates and assumptions. Check opening and closing balances or other control totals, document formulas, avoid double counting, and explain any unreconciled variance. Model a base case and material alternatives, expose operational drivers, taxes or fees when in scope, and test sensitivity, break-even, liquidity, unit economics and downside without unsupported precision. Use current authoritative rates, prices or statements when they affect the result, and escalate accounting, tax, legal or fiduciary judgments. Deliver the source ledger, reconciled model, formulas, scenarios, sensitivity, uncertainty, thresholds and decision range. Do not invent financial records, imply audit assurance, execute a transaction, move funds or commit spend without explicit authority.",
+      "triggers": [
+        "reconciled financial model",
+        "budget forecast sensitivity",
+        "unit economics decision"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "legal-compliance",
+      "version": "2.0.0",
+      "title": "Legal and compliance review",
+      "description": "Use for jurisdiction-specific issue spotting, policy review, or compliance risk; not as a substitute for legal counsel.",
+      "category": "risk",
+      "instructions": "Establish the jurisdictions and effective date, product or practice, actors and legal roles, users, facts, data and money flows, contracts, notices, controls and risk tolerance. Use current primary statutes, regulations, regulator guidance, official decisions or contractual text where available, with direct citations and effective dates; distinguish binding requirements, regulator guidance, contractual duties and interpretation. Map each issue to the affected flow and evidence, grade likelihood and impact without false precision, identify missing facts and conflicting sources, and propose bounded remediation, owner, validation and residual risk. Separate issue spotting from legal advice and escalate novel, high-impact, ambiguous, litigation, filing, enforcement or jurisdiction conflicts to qualified counsel. Deliver the scoped fact record, cited requirement and interpretation, issue and risk register, remediation options, draft language clearly marked as draft, open questions and counsel checkpoints. Do not claim compliance, approval or privilege, and do not file, accept terms, send legal notices or make external representations without explicit authority.",
+      "triggers": [
+        "jurisdiction compliance issue",
+        "privacy regulatory review",
+        "contract policy risk"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "support-operations",
+      "version": "2.0.0",
+      "title": "Support operations",
+      "description": "Use for evidence-based support responses, escalation design, or knowledge gaps; not for pretending account actions occurred.",
+      "category": "operations",
+      "instructions": "Capture the case reference, customer request, product and version, environment, timeline, exact symptom, prior steps, reproduction, impact and privacy-safe evidence. Verify account facts, entitlement and current policy only through authorized sources; distinguish observed facts, customer report, hypothesis, policy and unknowns. Choose the least risky reversible troubleshooting step, warn before data loss or interruption, and stop when identity, account access, product authority or safety is insufficient. For an account action, refund, credit, access change, fix, escalation or external reply, state whether it is proposed, authorized, executed or verified and never imply an outcome without a receipt. Escalate with severity, owner, evidence, attempted steps, customer impact, workaround, requested decision and response deadline. Deliver a clear empathetic ready-to-send response, internal case notes, safe next steps, escalation status, policy source, outcome state and knowledge or product gap. Do not expose secrets or blame the customer, and do not fabricate access, refunds, approvals, fixes or resolution.",
+      "triggers": [
+        "evidence based support case",
+        "customer escalation handoff",
+        "support knowledge gap"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": true
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "skill",
+      "slug": "tone-and-humor",
+      "version": "2.0.0",
+      "title": "Tone and humor",
+      "description": "Use only after an explicit request for humor or approved playful copy; never auto-activate in high-stakes contexts.",
+      "category": "content",
+      "instructions": "Activate only after an explicit humor request or approved playful-copy task. Confirm the audience, relationship, setting, purpose, brand voice, language and locale, sensitivities, placement, frequency and requested intensity. Keep meaning and comprehension first, make the humor optional and concise, and offer a small range of alternatives when tone is subjective. Favor situation over person, inclusive language over stereotypes, and durable wordplay over unsupported current references; preserve translation, accessibility and task completion. Do not use humor to obscure an error, consent, price, risk, limitation or call to action, and avoid jokes in medical, legal, financial, security, incident, destructive, bereavement, harassment or other high-stakes contexts unless the user explicitly requests them and the fit is safe. Never target protected traits, trauma or an identifiable person's vulnerability. Deliver the copy options with brief tone differences and any risk note. Do not auto-inject jokes into unrelated work or claim that humor will improve engagement without evidence.",
+      "triggers": [
+        "explicit humor writing",
+        "approved playful copy",
+        "audience aware joke"
+      ],
+      "requiredCapabilities": [],
+      "allowedOperations": [],
+      "providerCompatibility": [
+        "codex",
+        "claude"
+      ],
+      "defaultEnabled": false
+    }
+  ]
+}

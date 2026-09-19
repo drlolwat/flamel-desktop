@@ -1,0 +1,44 @@
+[package]
+name = "flamel-desktop"
+version = "0.1.0"
+edition = "2024"
+authors = ["Flamel.dev"]
+description = "Flamel Desktop workspace client"
+homepage = "https://flamel.dev"
+license-file = "../LICENSE.md"
+[[bin]]
+name = "flamel"
+path = "src/main.rs"
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+[dependencies]
+flamel = { package = "flamel-engine", path = "../engine" }
+flamel-protocol = { path = "../protocol" }
+tauri = { version = "2", features = ["tray-icon", "image-png"] }
+tauri-plugin-dialog = "2"
+tauri-plugin-shell = "2"
+tauri-plugin-notification = "2"
+tauri-plugin-single-instance = "2"
+tauri-plugin-clipboard-manager = "2.3.2"
+tauri-plugin-updater = "2"
+tauri-plugin-process = "2"
+tokio = { version = "1", features = ["full"] }
+tokio-util = "0.7"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "stream", "json"] }
+futures = "0.3"
+http-body-util = "0.1"
+axum = "0.8"
+uuid = { version = "1", features = ["v4"] }
+dirs = "6"
+open = "5"
+tracing = "0.1"
+keyring = { version = "3.6.3", features = ["apple-native", "windows-native", "sync-secret-service", "crypto-rust"] }
+tokio-tungstenite = { version = "0.24", features = ["rustls-tls-webpki-roots"] }
+sha2 = "0.10"
+base64 = "0.22"
+rand = "0.9"
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]

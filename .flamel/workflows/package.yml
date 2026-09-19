@@ -1,0 +1,80 @@
+name: Package reviewed public runtime
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  linux:
+    runs-on: ubuntu-22.04
+    container: rust:1.97-bookworm
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install native build dependencies
+        run: |
+          apt-get update -qq
+          apt-get install -y -qq python3 python-is-python3 pkg-config libwebkit2gtk-4.1-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev libdbus-1-dev
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: python scripts/audit-source.py
+      - run: python scripts/test-source-boundary.py
+      - run: cargo install tauri-cli --version 2.11.2 --locked
+      - run: python scripts/dependency-sources.py artifacts
+      - run: npm run build -- --bundles deb
+      - run: cargo test -p flamel-engine --lib --locked
+      - run: cargo test -p flamel-desktop --locked
+      - run: cargo test -p flamel-engine --test native_runtime --locked
+      - run: npm test --workspace frontend
+      - run: python scripts/export-source.py artifacts/flamel-runtime-source.tar.gz
+      - run: python scripts/package-evidence.py artifacts
+      - uses: actions/upload-artifact@v4
+        with:
+          name: flamel-desktop-linux-unsigned-candidate
+          path: artifacts
+  windows-wine:
+    runs-on: ubuntu-22.04
+    container: rust:1.97-bookworm
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Windows cross-build and Wine tools
+        run: |
+          dpkg --add-architecture i386
+          apt-get update -qq
+          apt-get install -y -qq python3 pkg-config libayatana-appindicator3-dev clang lld llvm nsis wine wine32 wine64 xvfb xauth curl unzip
+          rustup target add x86_64-pc-windows-msvc
+          cargo install cargo-xwin --version 0.23.1 --locked
+          cargo install tauri-cli --version 2.11.2 --locked
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: python3 scripts/test-source-boundary.py
+      - run: bash scripts/build-windows.sh
+      - name: Build Windows engine tests
+        run: |
+          mkdir -p artifacts
+          cargo xwin test --locked --release --target x86_64-pc-windows-msvc -p flamel-engine --lib --no-run --message-format=json > artifacts/windows-test-build.jsonl
+      - name: Verify installed Windows payload and engine under Wine
+        run: |
+          export WINEPREFIX="$(mktemp -d /tmp/flamel-wine.XXXXXX)"
+          export WINEDEBUG=-all
+          export WINEDLLOVERRIDES='mscoree,mshtml='
+          trap 'wineserver -k; rm -rf "$WINEPREFIX"' EXIT
+          python3 scripts/verify-windows-wine.py target/x86_64-pc-windows-msvc/release/bundle/nsis/*-setup.exe
+          curl -fL --retry 3 https://github.com/git-for-windows/git/releases/download/v2.55.0.windows.5/MinGit-2.55.0.5-64-bit.zip -o /tmp/flamel-mingit.zip
+          echo '56d7b226b7693196cfc71fef26568f536c4a021ab6c37ff2db4287bed908e96e  /tmp/flamel-mingit.zip' | sha256sum -c -
+          unzip -q /tmp/flamel-mingit.zip -d "$WINEPREFIX/drive_c/MinGit"
+          export WINEPATH='C:\MinGit\cmd;C:\MinGit\usr\bin'
+          test_exe=$(python3 -c 'import json; rows=[json.loads(line) for line in open("artifacts/windows-test-build.jsonl")]; tests=[row["executable"] for row in rows if row.get("reason")=="compiler-artifact" and row.get("profile",{}).get("test") and row.get("executable")]; assert len(tests)==1; print(tests[0])')
+          xvfb-run -a wine "$test_exe" --test-threads=4
+      - run: python3 scripts/dependency-sources.py artifacts
+      - run: python3 scripts/export-source.py artifacts/flamel-runtime-source.tar.gz
+      - run: python3 scripts/package-evidence.py artifacts --target x86_64-pc-windows-msvc
+      - uses: actions/upload-artifact@v4
+        with:
+          name: flamel-desktop-windows-wine-unsigned-candidate
+          path: artifacts
+# No publishing permission, signing identity, or updater credentials.

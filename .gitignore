@@ -1,0 +1,16 @@
+target/
+node_modules/
+dist/
+**/dist/
+**/node_modules/
+.env
+*.db
+*.db-wal
+*.db-shm
+*.tsbuildinfo
+desktop/resources/bin/
+desktop/gen/
+artifacts/
+desktop/resources/notices/
+__pycache__/
+*.pyc

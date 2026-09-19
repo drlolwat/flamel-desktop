@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "description": "Flamel UI performance budgets. Limits are hard regression caps for current builds; targets are the lightweight goals future refactors should reach.",
+  "assetBudgets": [
+    {
+      "id": "main-entry-js-gzip",
+      "label": "Main entry JS gzip",
+      "metric": "mainEntryJs.gzipKiB",
+      "unit": "KiB",
+      "target": 200,
+      "limit": 410
+    },
+    {
+      "id": "main-entry-js-raw",
+      "label": "Main entry JS raw",
+      "metric": "mainEntryJs.rawKiB",
+      "unit": "KiB",
+      "target": 700,
+      "limit": 1500
+    },
+    {
+      "id": "total-js-gzip",
+      "label": "All deferred and initial JS gzip",
+      "metric": "js.gzipKiB",
+      "unit": "KiB",
+      "target": 3000,
+      "limit": 3650
+    },
+    {
+      "id": "total-js-raw",
+      "label": "All deferred and initial JS raw",
+      "metric": "js.rawKiB",
+      "unit": "KiB",
+      "target": 13000,
+      "limit": 15000
+    },
+    {
+      "id": "js-asset-count",
+      "label": "JS asset count",
+      "metric": "js.count",
+      "unit": "count",
+      "target": 120,
+      "limit": 345
+    },
+    {
+      "id": "dist-asset-count",
+      "label": "Dist asset count",
+      "metric": "assetCount",
+      "unit": "count",
+      "target": 180,
+      "limit": 350
+    },
+    {
+      "id": "initial-css-gzip",
+      "label": "Initial CSS gzip",
+      "metric": "initialCss.gzipKiB",
+      "unit": "KiB",
+      "target": 6,
+      "limit": 10
+    },
+    {
+      "id": "total-css-gzip",
+      "label": "All deferred and initial CSS gzip",
+      "metric": "css.gzipKiB",
+      "unit": "KiB",
+      "target": 30,
+      "limit": 40
+    }
+  ],
+  "runtimeBudgets": [
+    {
+      "id": "local-web-fcp",
+      "label": "Local web FCP",
+      "unit": "ms",
+      "target": 1000,
+      "limit": 1800,
+      "measurement": "Browser performance recording after a production web build. Current audit baseline was 1808ms, so this limit becomes enforceable after startup splitting lands."
+    },
+    {
+      "id": "desktop-warm-window-ready",
+      "label": "Desktop warm window ready",
+      "unit": "ms",
+      "target": 1500,
+      "limit": 2000,
+      "measurement": "Tauri launch with sidecars already built and server readiness detected."
+    },
+    {
+      "id": "desktop-cold-window-ready",
+      "label": "Desktop cold window ready",
+      "unit": "ms",
+      "target": 3000,
+      "limit": 4000,
+      "measurement": "Tauri launch from a cold app process after sidecars are available."
+    },
+    {
+      "id": "stream-to-paint-steady",
+      "label": "Provider stdout to React paint at 20 lines/sec",
+      "unit": "ms p95",
+      "target": 100,
+      "limit": 150,
+      "measurement": "Performance marks from backend stream emit through client parse, store commit, React commit, and next paint."
+    },
+    {
+      "id": "stream-to-paint-burst",
+      "label": "Provider stdout to React paint during 200 lines/sec burst",
+      "unit": "ms p95",
+      "target": 250,
+      "limit": 350,
+      "measurement": "Same stream marks under bursty command or runner output."
+    },
+    {
+      "id": "streaming-long-tasks",
+      "label": "Main-thread long tasks during active streaming",
+      "unit": "count >50ms",
+      "target": 0,
+      "limit": 0,
+      "measurement": "Browser PerformanceObserver or recording during assistant text, console, plan, and diff streams."
+    },
+    {
+      "id": "active-chat-commit",
+      "label": "Active chat streaming React commit",
+      "unit": "ms p95",
+      "target": 10,
+      "limit": 16,
+      "measurement": "React profiler around active chat transcript while assistant text and tool rows stream."
+    },
+    {
+      "id": "markdown-reparse-rate",
+      "label": "Markdown reparses while streaming",
+      "unit": "per second",
+      "target": 15,
+      "limit": 20,
+      "measurement": "Counter around markdown parse/render adapter for the active block."
+    },
+    {
+      "id": "console-commit-rate",
+      "label": "Console React commits under bursty output",
+      "unit": "per second",
+      "target": 20,
+      "limit": 30,
+      "measurement": "Profiler or dev metric around command console output appends."
+    },
+    {
+      "id": "visible-console-dom",
+      "label": "Console visible DOM lines",
+      "unit": "count",
+      "target": 300,
+      "limit": 500,
+      "measurement": "DOM count for visible console rows after virtualization/windowing."
+    },
+    {
+      "id": "plan-panel-render",
+      "label": "Plan panel render with 200 items",
+      "unit": "ms p95",
+      "target": 16,
+      "limit": 24,
+      "measurement": "Component profiler around PlanPanel with active item updates."
+    },
+    {
+      "id": "webview-rss-soak",
+      "label": "Tauri/WebView RSS after 30-minute active session",
+      "unit": "MiB",
+      "target": 500,
+      "limit": 650,
+      "measurement": "Desktop soak with chat, console, plan, files, and diff panels active."
+    }
+  ]
+}

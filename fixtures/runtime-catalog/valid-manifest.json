@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "channel": "beta",
+  "revision": 41,
+  "min_runtime": "0.1.0",
+  "max_runtime": "0.1.99",
+  "artifacts": [
+    {
+      "kind": "skill",
+      "slug": "runtime-catalog-fixture",
+      "version": "1.0.0",
+      "sha256": "fae0463740fe05c819549bd0bfab42ee02a9b851527e4144d77f1487fb2d4459",
+      "byte_size": 427,
+      "fetch_url": "https://flamel.dev/api/runtime-catalog/artifacts/fae0463740fe05c819549bd0bfab42ee02a9b851527e4144d77f1487fb2d4459"
+    }
+  ],
+  "revocations": [],
+  "iss": "https://flamel.dev",
+  "aud": "flamel-runtime-catalog",
+  "iat": 1787529600,
+  "exp": 1788134400
+}
