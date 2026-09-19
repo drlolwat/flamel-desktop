@@ -24,6 +24,7 @@ jobs:
       - run: python scripts/dependency-sources.py artifacts
       - run: npm run build -- --bundles deb
       - run: cargo test -p flamel-engine --lib --locked
+      - run: cargo test -p flamel-engine --test remote_mcp --locked
       - run: cargo test -p flamel-desktop --locked
       - run: cargo test -p flamel-engine --test native_runtime --locked
       - run: npm test --workspace frontend

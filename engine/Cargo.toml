@@ -47,6 +47,7 @@ base64 = { version = "0.22", optional = true }
 chacha20poly1305 = { version = "0.10", optional = true }
 ed25519-dalek = { version = "2", optional = true }
 semver = { version = "1", features = ["serde"], optional = true }
+rustls = { version = "0.23.45", default-features = false, features = ["ring", "std", "tls12"], optional = true }
 rmcp = { version = "3.1.2", default-features = false, features = ["client", "transport-child-process", "transport-streamable-http-client-reqwest"], optional = true }
 
 # Async / streaming
@@ -133,7 +134,7 @@ required-features = ["engine"]
 default = ["engine"]
 engine = [
     "dep:axum", "dep:tower", 
-    "dep:rusqlite", "dep:tokio-postgres", "dep:mysql", "dep:rmcp", "dep:serde_yaml",
+    "dep:rusqlite", "dep:tokio-postgres", "dep:mysql", "dep:rmcp", "dep:rustls", "dep:serde_yaml",
     "dep:rand", "dep:jsonwebtoken", "dep:sha2", "dep:hmac", "dep:hex", "dep:base64", "dep:chacha20poly1305", "dep:ed25519-dalek", "dep:semver",
     "dep:tokio-util", "dep:async-stream", "dep:futures",
     "dep:reqwest", "dep:scraper", "dep:tungstenite", "dep:tokio-tungstenite",
@@ -153,4 +154,9 @@ required-features = ["engine"]
 name = "restored_profile"
 path = "tests/restored_profile.rs"
 harness = false
+required-features = ["engine"]
+
+[[test]]
+name = "remote_mcp"
+path = "tests/remote_mcp.rs"
 required-features = ["engine"]

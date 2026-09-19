@@ -9,6 +9,7 @@ import type {
 } from '@flamel/shared';
 import { Icon } from './Icons';
 import { api, apiFetch } from '../../lib/api';
+import { parseMcpArguments } from '../../lib/mcpArguments';
 import { useConnectionStore } from '../../stores/connectionStore';
 import {
   CODEX_MODELS,
@@ -1962,7 +1963,7 @@ function IntegrationsTab({
         transport: draft.transport as CapabilityCatalogEntry['transport'],
         command: draft.transport === 'stdio' ? draft.command.trim() : null,
         remoteUrl: draft.transport === 'stdio' ? null : draft.remoteUrl.trim(),
-        args: draft.args.split(/\s+/).filter(Boolean),
+        args: parseMcpArguments(draft.args),
         authKind: draft.authKind,
         category: 'developer',
       });

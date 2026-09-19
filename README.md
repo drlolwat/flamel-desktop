@@ -1,58 +1,76 @@
-# Flamel Runtime candidate
+# Flamel Desktop
 
-Flamel Desktop runs a local workspace without a Flamel account or an HTTP API listener. It can also connect to a standalone Server. Cloud account management, Git hosting, and the SaaS web shell remain in the private repository.
+A desktop workspace for coding with AI agents. Work with projects, files, Git and terminals on your own computer, or connect to a Flamel Server.
 
-This is a **source-available candidate under Flamel Community License 1.0**. The tailored license and contributor agreement require legal review before publication. See [LICENSE.md](LICENSE.md), [NOTICE](NOTICE), and [commercial licensing](COMMERCIAL.md). Nothing in this workspace has been published or deployed.
+**You can work locally without a Flamel account.** Signing in lets you choose one of the servers linked to your account or keep working locally under that account. AI providers may require their own account, credentials or CLI installation.
 
-| Package | Responsibility |
-| --- | --- |
-| `engine` | Workspace operations, persistence, providers, tools, native callback broker |
-| `desktop` | Bundled Tauri UI, native IPC, local profiles, remote connections, native credential storage |
-| `protocol` | Versioned native transport messages and limits |
-| `frontend` | Versioned `@flamel/workspace` UI package and Desktop entry |
-| `shared` | Shared TypeScript contracts |
+This repository contains the desktop client and local workspace engine. Desktop does not host a Flamel Server. The hosted service, Server and sign-in service implementations are private.
 
-## Build and verify
+## Build it yourself
 
-Requirements: stable Rust, Python 3.11+, Node.js/npm, the Tauri CLI, and native Tauri build dependencies for your platform. Linux needs GTK 3 and WebKitGTK 4.1 development packages; credential persistence uses Secret Service. Windows uses Credential Manager, and macOS uses Keychain. macOS remains a preview target.
+You need **Git, Node.js 22+, Python 3.11+, Rust stable** and the [Tauri prerequisites for your platform](https://v2.tauri.app/start/prerequisites/).
+
+On Ubuntu 24.04 or Debian 12+, install the native build packages:
 
 ```sh
-npm ci
-npm run build:ui
-node scripts/build-sidecars.mjs debug
-cargo check --workspace --all-targets --locked
-cargo test -p flamel-engine --lib --locked
-cargo test -p flamel-engine --test native_runtime --locked
-npm test --workspace frontend
-python3 scripts/audit-source.py
+sudo apt update
+sudo apt install build-essential pkg-config curl file python3 python-is-python3 \
+  libwebkit2gtk-4.1-dev libgtk-3-dev libayatana-appindicator3-dev \
+  librsvg2-dev libdbus-1-dev libssl-dev libxdo-dev
 ```
 
-Build Desktop with `npm run build`; that builds the bundled MCP tools before Tauri packaging. The bundle does not contain the standalone Server executable. Source builds use declared package versions, independent of private Git history. Automatic updater publication is not configured in this candidate. FlamelGit workflows live in `.flamel/workflows`: verification on Linux, Windows cross-builds and Wine tests, manual candidate packaging, and a separate macOS preview. The Windows jobs provision cargo-xwin, LLVM, NSIS, Wine and a hash-pinned Windows Git in an isolated prefix. macOS runners need Rust, Python, and Xcode tools. Dependencies are installed in the workflow containers.
+On Windows, install Visual Studio Build Tools with **Desktop development with C++**, the Windows SDK and Microsoft WebView2. Use a normal PowerShell terminal with Git, Node, Python and Cargo on your PATH. macOS requires Xcode Command Line Tools and remains an unverified preview target.
 
-To prepare the distribution evidence, run `python scripts/dependency-sources.py artifacts`, `npm run build -- --bundles deb` (Linux) or `--bundles nsis` (Windows), `python scripts/export-source.py artifacts/flamel-runtime-source.tar.gz`, and `python scripts/package-evidence.py artifacts`. Packaging produces an unsigned review candidate with notices, exact dependency sources, source hashes, and checksums. It does not publish anything.
+Then clone and build:
 
+```sh
+git clone https://git.flamel.dev/lolwat/flamel-desktop.git
+cd flamel-desktop
+cargo install tauri-cli --version 2.11.2 --locked
+npm ci
+npm run build -- --bundles deb
+```
 
+The Linux installer is in `target/release/bundle/deb/`. On Windows, replace the final command with `npm run build -- --bundles nsis`; the installer will be in `target/release/bundle/nsis/`.
 
-Use `DB_PATH`, `FLAMEL_HOME`, and `FLAMEL_VAULT_KEY_PATH` to select an isolated test profile. Existing default database and vault paths remain supported. Back up the database together with its vault key before migration. Startup preserves owner IDs; an existing database with multiple identities requires explicit Desktop profile selection.
+The build includes the local tools and license notices. It does not need the private Flamel repository, a Flamel account or release-signing credentials. The first build downloads dependencies and can take a while.
 
-Server hosting and account administration are implemented in the private service repository. `FLAMEL_CATALOG_REFRESH=1` enables Cloud catalog updates. The bundled catalog remains usable without them. Set `FLAMEL_PROVIDER_AUTO_UPDATE=0` to disable provider CLI update checks.
+## Run while developing
 
-## Authentication and transport
+After installing the prerequisites and running `npm ci`:
 
-Desktop dispatches versioned requests in-process and carries responses over native IPC in 64 KiB chunks. Realtime and terminal streams use the local workspace handlers. MCP callbacks use an authenticated Unix socket or Windows named pipe. Renderer-supplied identity headers cannot select another user. Hosted pages receive no native capability grant.
+```sh
+node scripts/build-sidecars.mjs debug
+python3 scripts/dependency-notices.py desktop/resources/notices
+npm run dev
+```
 
-Remote credentials stay in the native host. Remembered sessions use platform credential storage; unavailable storage produces an error rather than a plaintext fallback. HTTPS origins are required except explicit loopback development connections, and credentialed redirects are rejected.
+On Windows, use `python` if `python3` is unavailable. To run the tests:
 
-Optional Flamel sign-in uses the system browser, S256 PKCE, and a temporary loopback callback. The private integration candidate adds the `flamel-desktop` OAuth client, 10-minute Cloud access grants, 30-day rotating refresh families, separately scoped server grants, and short-lived Git assertions. Every new public-client authorization requires explicit browser confirmation. The Cloud grant is never sent to a selected Server. These new Cloud endpoints require the companion private changes and database migration; they are not deployed.
+```sh
+npm test
+```
 
-Free rebranded forks, internal business use, and paid work producing independent output are allowed. Selling Flamel, commercial hosting, advertising in it, and paid Flamel-specific services require separate commercial permission. Voluntary donations cannot gate benefits. Distributed modified builds must include corresponding source and build instructions. See [CONTRIBUTING.md](CONTRIBUTING.md) and [RELEASE_GATES.md](RELEASE_GATES.md).
+## What works today
 
-See [VALIDATION.md](VALIDATION.md) for measured results and remaining platform/release checks. The Tauri security configuration follows its [capability model](https://v2.tauri.app/security/capabilities/); credential backends follow the [keyring package documentation](https://docs.rs/crate/keyring/3.6.3/source/README.md).
+- **Linux:** built and tested, including the desktop window, local workspace and native transport.
+- **Windows:** cross-build, installer and 404 engine tests passed under Wine. The WebView2 interface and terminal remain unverified under Wine/Proton.
+- **macOS:** source preview; no native validation yet.
 
-### Windows from Linux
+Source builds are unsigned and do not receive automatic Flamel updates. See [VALIDATION.md](VALIDATION.md) for the test results and [BUILDING.md](BUILDING.md) for Windows cross-builds and isolated development profiles.
 
-Use a separate source export to avoid mixing Linux and Windows sidecars. Install cargo-xwin 0.23.1, the Rust `x86_64-pc-windows-msvc` target, LLVM/Clang, NSIS and the Tauri CLI 2.11.2, then run `npm ci` and `bash scripts/build-windows.sh`. The installer is written under `target/x86_64-pc-windows-msvc/release/bundle/nsis`.
+## MCP tools and integrations
 
-With Wine and Xvfb installed, set `WINEPREFIX` to a disposable absolute directory named `flamel-wine.*` and run `python3 scripts/verify-windows-wine.py <installer>`. This test supplies a WebView2 registration fixture to check the unmodified installer's payload, MCP startup and uninstall; it does not validate WebView2. The FlamelGit workflows also run the Windows engine tests with a real Windows Git executable. GUI compatibility results are recorded separately in VALIDATION.md. Cross-build instructions follow https://v2.tauri.app/distribute/windows-installer/.
+The build includes Flamel's tools for files, code, shell commands, plans, Git, docs, databases, browser automation and memory. The main `flamel` MCP loads its bundled helpers automatically. Local tools work without a Flamel account; hosted operations require the relevant account and permissions.
 
-Signing in with Flamel opens a separate workspace picker with the account's linked servers and a local-work option. Local work retains the active Flamel account for connected services while local profile ownership stays on the device. Switching connections returns to the picker; signing out ends the account session. The login screen has no saved-session or remember-session controls.
+In a local workspace, add your own MCP in **Settings → Capability Hub → Add**, using a local command or a remote MCP URL. Connect it and run its connection test to discover the tools. Local commands run on the computer or server hosting the selected workspace. Install any dependencies that your MCP needs there. In Arguments, quote paths containing spaces or paste a JSON array of strings. On a Flamel Server, its administrator controls which integrations are available.
+
+Git tools need Git on your PATH. Browser tools need Chrome or Chromium and Node.js; the browser helper uses `chrome-devtools-mcp@1.7.0` and can download it through `npx` on first use. Browser automation runs headlessly in an isolated session by default. Database drivers are built in.
+
+Packaged tool checks cover all six executables, calls through the main Flamel MCP, custom local commands, and authenticated remote MCP calls. See [BUILDING.md](BUILDING.md) to run them yourself.
+
+## License and contributions
+
+Flamel Desktop is **source-available under the [Flamel Community License 1.0](LICENSE.md)**. You can use it, modify it and distribute free forks under the license terms. Internal business use and paid work producing independent output are allowed. Monetizing Flamel itself requires a commercial license; contact [Flamel.dev](https://flamel.dev).
+
+Modified distributions must use distinct branding and include their corresponding source and build instructions. Third-party components keep their own licenses. Read [CONTRIBUTING.md](CONTRIBUTING.md) before sending changes.

@@ -114,6 +114,10 @@ pub async fn run_remote(
     cancellation: &CancellationToken,
 ) -> Result<CapabilityResult, String> {
     let started = Instant::now();
+    // rmcp's reqwest client enables rustls without choosing a crypto provider.
+    // Install the same ring provider used by our other TLS clients before its
+    // first Client::new(); keep a provider already installed by the host.
+    let _ = rustls::crypto::ring::default_provider().install_default();
     let mut config = StreamableHttpClientTransportConfig::with_uri(url.to_string());
     if let Some(token) = bearer {
         config = config.auth_header(token.to_string());

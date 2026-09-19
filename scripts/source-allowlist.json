@@ -1,11 +1,12 @@
 {
-  "policy": "Flamel Community License 1.0; private candidate pending legal review",
+  "policy": "Flamel Community License 1.0; source-available client distribution",
   "licenseSha256": "7fbdab6c334ea208bc6cb1e25f2b64bbc1d6b1d9032110232759a3cbb3076c8d",
   "files": [
     ".flamel/workflows/macos-preview.yml",
     ".flamel/workflows/package.yml",
     ".flamel/workflows/verify.yml",
     ".gitignore",
+    "BUILDING.md",
     "COMMERCIAL.md",
     "CONTRIBUTING.md",
     "CONTRIBUTOR_AGREEMENT.md",
@@ -246,6 +247,7 @@
     "engine/tests/mcp_parent_guard.rs",
     "engine/tests/mcp_provider_boundary.rs",
     "engine/tests/native_runtime.rs",
+    "engine/tests/remote_mcp.rs",
     "engine/tests/restored_profile.rs",
     "fixtures/prompt-injection/invoice.txt",
     "fixtures/runtime-catalog/README.md",
@@ -417,6 +419,8 @@
     "frontend/src/lib/guidanceTranscript.ts",
     "frontend/src/lib/historyProcessor.test.ts",
     "frontend/src/lib/historyProcessor.ts",
+    "frontend/src/lib/mcpArguments.test.ts",
+    "frontend/src/lib/mcpArguments.ts",
     "frontend/src/lib/messageProcessor.test.ts",
     "frontend/src/lib/messageProcessor.ts",
     "frontend/src/lib/models.test.ts",
@@ -511,6 +515,7 @@
     "scripts/package-evidence.py",
     "scripts/source-allowlist.json",
     "scripts/test-source-boundary.py",
+    "scripts/verify-packaged-mcp.py",
     "scripts/verify-windows-wine.py",
     "shared/LICENSE.md",
     "shared/NOTICE",
@@ -1073,7 +1078,12 @@
     "scripts/test-source-boundary.py": "public-build-tooling",
     "DEPENDENCY_REVIEW.md": "public-documentation",
     "scripts/build-windows.sh": "public-build-tooling",
-    "scripts/verify-windows-wine.py": "public-build-tooling"
+    "scripts/verify-windows-wine.py": "public-build-tooling",
+    "BUILDING.md": "documentation",
+    "scripts/verify-packaged-mcp.py": "public-build-tooling",
+    "engine/tests/remote_mcp.rs": "public-runtime-test",
+    "frontend/src/lib/mcpArguments.ts": "public-client-ui",
+    "frontend/src/lib/mcpArguments.test.ts": "public-client-ui"
   },
   "fixtureKeys": "fixtures/runtime-catalog keys and compaction test keys are published test fixtures, never production credentials"
 }

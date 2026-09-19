@@ -11,7 +11,7 @@
     "build": "node scripts/build-sidecars.mjs release && python scripts/dependency-notices.py desktop/resources/notices && cd desktop && cargo tauri build",
     "build:ui": "npm run build:local --workspace frontend",
     "check": "cargo check --workspace --all-targets",
-    "test": "cargo test -p flamel-engine --lib && npm test --workspace frontend",
+    "test": "cargo test -p flamel-engine --lib && cargo test -p flamel-engine --test remote_mcp && npm test --workspace frontend",
     "audit:source": "python3 scripts/audit-source.py"
   },
   "overrides": {

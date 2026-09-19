@@ -1,6 +1,6 @@
 # Dependency review — 2026-09-19
 
-The candidate locks rustls 0.23.45, event-listener 5.4.2, mysql 28.0.2, and chacha20 0.10.2. This fixes the Rust TLS and event-listener advisories found during release preparation and replaces two yanked versions. Earlier JavaScript dependency audits reported zero known vulnerabilities. Final private/Cloud rechecks were unavailable because the registry returned HTTP 503 during maintenance; rerun those before publication. Integrity-only lockfile repairs did not change JavaScript package versions. Rust audit reports zero vulnerability-class advisories, with informational warnings retained below; this is not a claim of zero risk.
+The candidate locks rustls 0.23.45, event-listener 5.4.2, mysql 28.0.2, and chacha20 0.10.2. This fixes the Rust TLS and event-listener advisories found during release preparation and replaces two yanked versions. Final public, private web and Cloud JavaScript audits reported zero known vulnerabilities. Integrity-only lockfile repairs did not change JavaScript package versions. Rust audit reports zero vulnerability-class advisories, with informational warnings retained below; this is not a claim of zero risk.
 
 ## Informational soundness warnings
 

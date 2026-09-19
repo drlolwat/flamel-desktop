@@ -26,6 +26,7 @@ jobs:
       - run: node scripts/build-sidecars.mjs debug
       - run: cargo check --workspace --all-targets --locked
       - run: cargo test -p flamel-engine --lib --locked
+      - run: cargo test -p flamel-engine --test remote_mcp --locked
       - run: cargo test -p flamel-engine --test native_runtime --locked
       - run: cargo test -p flamel-desktop --locked
       - run: npm test --workspace frontend

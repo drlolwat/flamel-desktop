@@ -1617,6 +1617,7 @@ dependencies = [
  "reqwest 0.12.28",
  "rmcp",
  "rusqlite",
+ "rustls",
  "scraper",
  "semver",
  "serde",
