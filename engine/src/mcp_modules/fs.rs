@@ -42,46 +42,38 @@ fn fuzzy_score(path: &str, query: &str) -> Option<i32> {
     Some(score)
 }
 
-/// Collect all files under `dir`, skipping common noise dirs.
-fn collect_files(dir: &str) -> Vec<String> {
-    let skip = [
-        "node_modules",
-        ".git",
-        "target",
-        "dist",
-        ".next",
-        "__pycache__",
-        ".cache",
-    ];
+/// Walk from the repository root so an explicitly requested ignored directory
+/// cannot bypass its parent rules. Only descend toward or inside `dir`.
+fn collect_files(dir: &str) -> Result<Vec<String>, String> {
+    let requested =
+        std::fs::canonicalize(dir).map_err(|error| format!("discovery error: {error}"))?;
+    if !requested.is_dir() {
+        return Err(format!("discovery path is not a directory: {dir}"));
+    }
+    let root = requested
+        .ancestors()
+        .find(|path| path.join(".git").exists())
+        .unwrap_or(&requested);
+    let scope = requested.clone();
+    let mut walker = ignore::WalkBuilder::new(root);
+    walker
+        .hidden(true)
+        .follow_links(false)
+        .parents(true)
+        .require_git(false)
+        .filter_entry(move |entry| {
+            scope.starts_with(entry.path()) || entry.path().starts_with(&scope)
+        });
     let mut out = Vec::new();
-    let Ok(walker) = std::fs::read_dir(dir) else {
-        return out;
-    };
-    let mut stack = vec![dir.to_string()];
-    while let Some(current) = stack.pop() {
-        let Ok(rd) = std::fs::read_dir(&current) else {
-            continue;
-        };
-        for entry in rd.flatten() {
-            let name = entry.file_name().to_string_lossy().to_string();
-            if name.starts_with('.') && name != ".env" {
-                continue;
-            }
-            let ft = match entry.file_type() {
-                Ok(ft) => ft,
-                Err(_) => continue,
-            };
-            if ft.is_dir() {
-                if !skip.contains(&name.as_str()) {
-                    stack.push(entry.path().display().to_string());
-                }
-            } else if ft.is_file() {
-                out.push(entry.path().display().to_string());
+    for entry in walker.build() {
+        let entry = entry.map_err(|error| format!("discovery error: {error}"))?;
+        if entry.file_type().is_some_and(|kind| kind.is_file()) {
+            if let Ok(relative) = entry.path().strip_prefix(&requested) {
+                out.push(Path::new(dir).join(relative).to_string_lossy().into_owned());
             }
         }
     }
-    let _ = walker; // suppress unused warning
-    out
+    Ok(out)
 }
 
 pub fn read_file(args: &Value) -> Result<String, String> {
@@ -121,6 +113,14 @@ pub fn read_file(args: &Value) -> Result<String, String> {
 }
 
 pub fn find_file_result(args: &Value) -> Result<Value, String> {
+    discover_file_result(args, false)
+}
+
+pub fn glob_file_result(args: &Value) -> Result<Value, String> {
+    discover_file_result(args, true)
+}
+
+fn discover_file_result(args: &Value, glob_only: bool) -> Result<Value, String> {
     let pattern = args
         .get("pattern")
         .and_then(|v| v.as_str())
@@ -132,24 +132,26 @@ pub fn find_file_result(args: &Value) -> Result<Value, String> {
         .unwrap_or(".");
     let limit = args.get("limit").and_then(|v| v.as_u64()).unwrap_or(20) as usize;
     let prefix = format!("{}/", dir.trim_end_matches('/'));
-    let is_glob = pattern.contains('*') || pattern.contains('?') || pattern.contains('[');
+    let is_glob =
+        glob_only || pattern.contains('*') || pattern.contains('?') || pattern.contains('[');
+    let files = collect_files(dir)?;
 
     let (mode, total, paths) = if is_glob {
-        let full_pattern = if pattern.contains('/') {
-            format!("{dir}/{pattern}")
-        } else {
-            format!("{dir}/**/{pattern}")
+        let glob = glob::Pattern::new(pattern).map_err(|e| format!("invalid glob pattern: {e}"))?;
+        let options = glob::MatchOptions {
+            require_literal_separator: true,
+            ..Default::default()
         };
-        let mut matches: Vec<String> = glob::glob(&full_pattern)
-            .map_err(|e| format!("invalid glob pattern: {e}"))?
-            .filter_map(|entry| entry.ok())
-            .filter(|path| path.is_file())
-            .map(|path| {
-                let displayed = path.display().to_string();
-                displayed
-                    .strip_prefix(&prefix)
-                    .unwrap_or(&displayed)
-                    .to_string()
+        let mut matches: Vec<String> = files
+            .into_iter()
+            .map(|path| path.strip_prefix(&prefix).unwrap_or(&path).to_string())
+            .filter(|path| {
+                let candidate = if pattern.contains('/') {
+                    path.as_str()
+                } else {
+                    path.rsplit('/').next().unwrap_or(path)
+                };
+                glob.matches_with(candidate, options)
             })
             .collect();
         matches.sort();
@@ -160,7 +162,6 @@ pub fn find_file_result(args: &Value) -> Result<Value, String> {
             .collect::<Vec<_>>();
         ("glob", total, paths)
     } else {
-        let files = collect_files(dir);
         let mut scored: Vec<(i32, String)> = files
             .iter()
             .filter_map(|file| {
@@ -172,7 +173,7 @@ pub fn find_file_result(args: &Value) -> Result<Value, String> {
                 Some((score, relative.to_string()))
             })
             .collect();
-        scored.sort_by(|left, right| right.0.cmp(&left.0));
+        scored.sort_by(|left, right| right.0.cmp(&left.0).then_with(|| left.1.cmp(&right.1)));
         let total = scored.len();
         scored.truncate(limit);
         let paths = scored

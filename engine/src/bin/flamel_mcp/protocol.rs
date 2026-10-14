@@ -253,7 +253,11 @@ pub(super) fn run_rg_records(
     if let Some(glob) = include {
         command.arg("--glob").arg(glob);
     }
-    command.arg(pattern).arg(search_path);
+    command
+        .arg("--regexp")
+        .arg(pattern)
+        .arg("--")
+        .arg(search_path);
     let output = command
         .output()
         .map_err(|error| format!("rg not found: {error}"))?;

@@ -1324,6 +1324,176 @@ impl Drop for EngineeringFixture {
     }
 }
 
+#[test]
+fn navigation_search_treats_leading_dashes_as_patterns() {
+    let fixture = EngineeringFixture::new();
+    std::fs::write(
+        fixture.root.join("--flags with spaces.txt"),
+        "--flamel-option\n-flamel-short\nalpha42\n",
+    )
+    .unwrap();
+    for pattern in ["--flamel-option", "-flamel-short", "alpha[0-9]+"] {
+        let result = fixture.call(
+            "code_nav",
+            json!({
+                "action": "search", "pattern": pattern,
+                "path": "--flags with spaces.txt", "context": 0,
+            }),
+        );
+        assert_eq!(result["counts"]["matches"], 1, "{pattern}");
+    }
+    let absent = fixture.call(
+        "flamel_search",
+        json!({"pattern": "--absent-option", "path": "--flags with spaces.txt", "context": 0}),
+    );
+    assert_eq!(absent["counts"]["matches"], 0);
+    let invalid = fixture.protocol_call(
+        "code_nav",
+        json!({"action": "search", "pattern": "[", "path": "--flags with spaces.txt"}),
+    );
+    assert_eq!(invalid["result"]["isError"], true);
+    assert!(
+        invalid["result"]["structuredContent"]["text"]
+            .as_str()
+            .unwrap()
+            .contains("rg error")
+    );
+}
+
+#[test]
+fn navigation_discovery_respects_ignore_rules_in_all_modes() {
+    let fixture = EngineeringFixture::new();
+    assert!(
+        std::process::Command::new("git")
+            .args(["init", "--quiet"])
+            .arg(&fixture.root)
+            .output()
+            .unwrap()
+            .status
+            .success()
+    );
+    for directory in ["source", "source/nested", "build", ".hidden"] {
+        std::fs::create_dir_all(fixture.root.join(directory)).unwrap();
+    }
+    std::fs::write(fixture.root.join(".gitignore"), "build/\n*.generated.rs\n").unwrap();
+    std::fs::write(
+        fixture.root.join("source/nested/.gitignore"),
+        "*.rs\n!keep.rs\n",
+    )
+    .unwrap();
+    std::fs::write(
+        fixture.root.join(".git/info/exclude"),
+        "source/excluded.rs\n",
+    )
+    .unwrap();
+    for file in [
+        "source/visible.rs",
+        "source/ignored.generated.rs",
+        "source/excluded.rs",
+        "source/nested/ignored.rs",
+        "source/nested/keep.rs",
+        "build/generated.rs",
+        ".hidden/hidden.rs",
+        ".env",
+    ] {
+        std::fs::write(fixture.root.join(file), "fixture\n").unwrap();
+    }
+    for (action, pattern) in [("find", "rs"), ("find", "*.rs"), ("glob", "*.rs")] {
+        let result = fixture.call("file_read", json!({"action": action, "pattern": pattern}));
+        let mut paths = result["data"]["paths"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|entry| entry["path"].as_str().unwrap())
+            .collect::<Vec<_>>();
+        paths.sort();
+        assert_eq!(
+            paths,
+            ["alpha.rs", "source/nested/keep.rs", "source/visible.rs"],
+            "{action}/{pattern}"
+        );
+    }
+    for action in ["find", "glob"] {
+        let result = fixture.call(
+            "file_read",
+            json!({
+                "action": action, "pattern": "*.rs", "path": "build", "relative_path": "build",
+            }),
+        );
+        assert_eq!(
+            result["data"]["paths"],
+            json!([]),
+            "explicit ignored directory/{action}"
+        );
+        let result = fixture.call(
+            "file_read",
+            json!({
+                "action": action, "pattern": "source/**/*.rs",
+            }),
+        );
+        assert_eq!(
+            result["data"]["paths"].as_array().unwrap().len(),
+            2,
+            "recursive glob/{action}"
+        );
+    }
+    let explicit_read = fixture.call(
+        "file_read",
+        json!({"action": "read", "file": "build/generated.rs"}),
+    );
+    assert_eq!(explicit_read["status"], "ok");
+    let hidden = fixture.call("file_read", json!({"action": "find", "pattern": "env"}));
+    assert_eq!(hidden["data"]["paths"], json!([]));
+}
+
+#[test]
+fn navigation_glob_without_wildcards_does_not_fuzzy_match() {
+    let fixture = EngineeringFixture::new();
+    let exact = fixture.call(
+        "file_read",
+        json!({"action": "glob", "pattern": "alpha.rs"}),
+    );
+    assert_eq!(
+        exact["data"]["paths"],
+        json!([{"path": "alpha.rs", "kind": "file"}])
+    );
+    let absent = fixture.call("flamel_glob", json!({"pattern": "alprs"}));
+    assert_eq!(absent["data"]["paths"], json!([]));
+    let fuzzy = fixture.call("find_file", json!({"pattern": "alprs"}));
+    assert_eq!(fuzzy["data"]["paths"][0]["path"], "alpha.rs");
+}
+
+#[cfg(unix)]
+#[test]
+fn navigation_discovery_does_not_follow_symlinks() {
+    let fixture = EngineeringFixture::new();
+    std::fs::create_dir(fixture.root.join("source")).unwrap();
+    std::fs::write(fixture.root.join("source/visible.rs"), "fixture\n").unwrap();
+    std::os::unix::fs::symlink(&fixture.root, fixture.root.join("source/loop")).unwrap();
+    std::os::unix::fs::symlink(
+        fixture.root.join("alpha.rs"),
+        fixture.root.join("source/link.rs"),
+    )
+    .unwrap();
+    for action in ["find", "glob"] {
+        let result = fixture.call(
+            "file_read",
+            json!({
+                "action": action, "pattern": "*.rs", "path": "source", "relative_path": "source",
+            }),
+        );
+        let path = if action == "find" {
+            "visible.rs"
+        } else {
+            "source/visible.rs"
+        };
+        assert_eq!(
+            result["data"]["paths"],
+            json!([{"path": path, "kind": "file"}])
+        );
+    }
+}
+
 fn sorted_object_keys(value: &Value) -> Vec<String> {
     let mut keys = value
         .as_object()

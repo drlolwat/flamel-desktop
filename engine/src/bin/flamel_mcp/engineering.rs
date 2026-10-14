@@ -1248,38 +1248,21 @@ pub(super) fn handle(
                     } else {
                         resolve_path(requested_path, project_path)
                     };
-                    let output = flamel::mcp_parent_guard::command("fd")
-                        .arg("--glob")
-                        .arg(pattern)
-                        .arg("--type")
-                        .arg("f")
-                        .arg("--color")
-                        .arg("never")
-                        .arg(&full_path)
-                        .output()
-                        .or_else(|_| {
-                            flamel::mcp_parent_guard::command("find")
-                                .arg(&full_path)
-                                .arg("-type")
-                                .arg("f")
-                                .arg("-name")
-                                .arg(pattern)
-                                .output()
-                        })
-                        .map_err(|error| format!("glob failed: {error}"))?;
-                    if !output.status.success() {
-                        return Err(format!(
-                            "glob failed: {}",
-                            String::from_utf8_lossy(&output.stderr).trim()
-                        ));
-                    }
-                    let stdout = String::from_utf8(output.stdout)
-                        .map_err(|_| "glob returned a non-UTF-8 path".to_string())?;
-                    let paths = stdout
-                        .lines()
+                    let result = mcp_fs::glob_file_result(&json!({
+                        "pattern": pattern,
+                        "relative_path": full_path,
+                    }))?;
+                    let paths = result["paths"]
+                        .as_array()
+                        .into_iter()
+                        .flatten()
+                        .filter_map(|entry| entry["path"].as_str())
                         .map(|path| {
                             json!({
-                                "path": engineering_display_path(path, project_path),
+                                "path": engineering_display_path(
+                                    &std::path::Path::new(&full_path).join(path).to_string_lossy(),
+                                    project_path,
+                                ),
                                 "kind": "file",
                             })
                         })
@@ -1317,7 +1300,11 @@ pub(super) fn handle(
                     ))
                 }
                 "find" => {
-                    let result = mcp_fs::find_file_result(&with_resolved_path(args, project_path))?;
+                    let mut resolved = with_resolved_path(args, project_path);
+                    if args.get("relative_path").is_none() && args.get("path").is_none() {
+                        resolved["relative_path"] = json!(project_path);
+                    }
+                    let result = mcp_fs::find_file_result(&resolved)?;
                     let paths = result["paths"].as_array().cloned().unwrap_or_default();
                     let full_text = if paths.is_empty() {
                         format!(
